@@ -1,0 +1,2 @@
+# The-Observed-but-Not-Detected-Gap-A-TTB-Model-for-eBPF-Based-Container-Runtime-Security
+We formalise this observation-to-decision gap as the Detection-Trust Boundary and present a six-class trust-anchor taxonomy, a Trust Dependency Score, and TTB-Audit, a static auditor for Falco, Tetragon, and Tracee policies evaluated across 87 upstream policy files, a 175-event differential experiment, and a live Kubernetes testbed.   
