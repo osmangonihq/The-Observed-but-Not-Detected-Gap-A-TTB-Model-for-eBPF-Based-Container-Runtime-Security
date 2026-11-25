@@ -1,0 +1,36 @@
+apiVersion: cilium.io/v1alpha1
+kind: TracingPolicy
+metadata:
+  name: escape-observe
+spec:
+  kprobes:
+  - call: "__x64_sys_capset"
+    syscall: true
+    selectors:
+    - matchActions:
+      - action: Post
+  - call: "__x64_sys_setuid"
+    syscall: true
+    selectors:
+    - matchActions:
+      - action: Post
+  - call: "__x64_sys_mount"
+    syscall: true
+    selectors:
+    - matchActions:
+      - action: Post
+  - call: "__x64_sys_setns"
+    syscall: true
+    selectors:
+    - matchActions:
+      - action: Post
+  - call: "__x64_sys_open_by_handle_at"
+    syscall: true
+    selectors:
+    - matchActions:
+      - action: Post
+  - call: "__x64_sys_bpf"
+    syscall: true
+    selectors:
+    - matchActions:
+      - action: Post

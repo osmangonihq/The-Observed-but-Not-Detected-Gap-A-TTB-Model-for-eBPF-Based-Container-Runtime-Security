@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# VM runtime state (not published)
+vm/*.qcow2
+vm/*.iso
+vm/*.log
+vm/*.pid
+vm/images/
+
+# OS / editor
+.DS_Store
+*.swp

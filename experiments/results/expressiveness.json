@@ -1,0 +1,46 @@
+{
+  "schema": "ttb-expressiveness/1.0",
+  "legend": {
+    "yes": "The policy language can express a trust-robust detection natively.",
+    "partial": "Expressible with effort, custom helpers, or external correlation.",
+    "no": "Not expressible in the stock policy language; requires sensor changes."
+  },
+  "matrix": {
+    "TB-01 privilege re-validation at event time": {
+      "Falco": "partial",
+      "Tetragon": "yes",
+      "Tracee": "yes",
+      "evidence": "Tetragon supports kprobes on capset/commit_creds and credential-change events; Tracee exposes credential/signature events; Falco can read cap_effective but its rule language has no native event-time capability-change state machine."
+    },
+    "TB-02 immutable workload identity allowlists": {
+      "Falco": "partial",
+      "Tetragon": "partial",
+      "Tracee": "partial",
+      "evidence": "All three support image/namespace/label filters, but none binds an allowlist to signed digest plus service account by default; wildcards remain permitted."
+    },
+    "TB-03 fail-closed on telemetry gaps": {
+      "Falco": "partial",
+      "Tetragon": "partial",
+      "Tracee": "partial",
+      "evidence": "Falco offers proc_name_exists; Tetragon documents dropped-event metrics; Tracee documents container=new race limitations. None treats a missing field as an alertable condition by default."
+    },
+    "TB-04 semantic (non-name-based) matching": {
+      "Falco": "yes",
+      "Tetragon": "yes",
+      "Tracee": "yes",
+      "evidence": "All three can filter on syscall type, path and kernel object; shipped examples nevertheless frequently use binary names."
+    },
+    "TB-05 LSM cross-check for argument integrity": {
+      "Falco": "no",
+      "Tetragon": "yes",
+      "Tracee": "yes",
+      "evidence": "Tetragon supports lsmhooks (e.g. bprm_check_security) and Tracee exposes LSM-based signature events; Falco's default ruleset is predominantly syscall-event based."
+    },
+    "TB-06 time-series identity / credential state": {
+      "Falco": "partial",
+      "Tetragon": "yes",
+      "Tracee": "yes",
+      "evidence": "Tetragon and Tracee both document post-exec credential-change visibility; Falco's shipped rules rely on exec-time snapshots and launch metadata."
+    }
+  }
+}

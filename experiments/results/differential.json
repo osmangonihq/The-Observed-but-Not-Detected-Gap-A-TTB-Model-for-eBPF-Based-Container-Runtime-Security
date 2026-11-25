@@ -1,0 +1,2159 @@
+{
+  "schema": "ttb-differential/1.0",
+  "description": "Abstract interpretation of trust anchors over synthetic events. Not a vendor engine; no live exploitation.",
+  "event_count": 200,
+  "variant_count": 8,
+  "technique_count": 25,
+  "tools": {
+    "Falco": {
+      "rules": 96,
+      "by_variant": {
+        "baseline": {
+          "events": 25,
+          "fired": 23,
+          "rate": 0.92
+        },
+        "stale-capability": {
+          "events": 25,
+          "fired": 22,
+          "rate": 0.88
+        },
+        "post-exec-privilege": {
+          "events": 25,
+          "fired": 22,
+          "rate": 0.88
+        },
+        "renamed-binary": {
+          "events": 25,
+          "fired": 20,
+          "rate": 0.8
+        },
+        "missing-parent": {
+          "events": 25,
+          "fired": 19,
+          "rate": 0.76
+        },
+        "allowlisted-image": {
+          "events": 25,
+          "fired": 14,
+          "rate": 0.56
+        },
+        "toctou-mismatch": {
+          "events": 25,
+          "fired": 9,
+          "rate": 0.36
+        },
+        "benign-lookalike": {
+          "events": 25,
+          "fired": 11,
+          "rate": 0.44
+        }
+      },
+      "anchor_drop": {
+        "stale-capability": 0.04,
+        "post-exec-privilege": 0.04,
+        "renamed-binary": 0.12,
+        "missing-parent": 0.16,
+        "allowlisted-image": 0.36,
+        "toctou-mismatch": 0.56
+      },
+      "overall": {
+        "tp": 129,
+        "fn": 46,
+        "fp": 11,
+        "tn": 14,
+        "precision": 0.9214,
+        "recall": 0.7371,
+        "f1": 0.819,
+        "fpr": 0.44
+      },
+      "fired_by_event": {
+        "T01-baseline": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T01-stale-capability": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T01-post-exec-privilege": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T01-renamed-binary": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T01-missing-parent": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T01-allowlisted-image": [
+          "Detect release_agent File Container Escapes"
+        ],
+        "T01-toctou-mismatch": [],
+        "T01-benign-lookalike": [],
+        "T02-baseline": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T02-stale-capability": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T02-post-exec-privilege": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T02-renamed-binary": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T02-missing-parent": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T02-allowlisted-image": [
+          "Detect release_agent File Container Escapes"
+        ],
+        "T02-toctou-mismatch": [],
+        "T02-benign-lookalike": [],
+        "T03-baseline": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T03-stale-capability": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T03-post-exec-privilege": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T03-renamed-binary": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T03-missing-parent": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T03-allowlisted-image": [
+          "Detect release_agent File Container Escapes"
+        ],
+        "T03-toctou-mismatch": [],
+        "T03-benign-lookalike": [],
+        "T04-baseline": [
+          "Mount Launched in Privileged Container",
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T04-stale-capability": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T04-post-exec-privilege": [
+          "Mount Launched in Privileged Container",
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T04-renamed-binary": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T04-missing-parent": [
+          "Mount Launched in Privileged Container",
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T04-allowlisted-image": [
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T04-toctou-mismatch": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T04-benign-lookalike": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T05-baseline": [
+          "Change thread namespace"
+        ],
+        "T05-stale-capability": [
+          "Change thread namespace"
+        ],
+        "T05-post-exec-privilege": [
+          "Change thread namespace"
+        ],
+        "T05-renamed-binary": [],
+        "T05-missing-parent": [],
+        "T05-allowlisted-image": [],
+        "T05-toctou-mismatch": [],
+        "T05-benign-lookalike": [],
+        "T06-baseline": [
+          "Change thread namespace"
+        ],
+        "T06-stale-capability": [
+          "Change thread namespace"
+        ],
+        "T06-post-exec-privilege": [
+          "Change thread namespace"
+        ],
+        "T06-renamed-binary": [
+          "Change thread namespace"
+        ],
+        "T06-missing-parent": [],
+        "T06-allowlisted-image": [],
+        "T06-toctou-mismatch": [],
+        "T06-benign-lookalike": [],
+        "T07-baseline": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T07-stale-capability": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T07-post-exec-privilege": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T07-renamed-binary": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T07-missing-parent": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T07-allowlisted-image": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T07-toctou-mismatch": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T07-benign-lookalike": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T08-baseline": [],
+        "T08-stale-capability": [],
+        "T08-post-exec-privilege": [],
+        "T08-renamed-binary": [],
+        "T08-missing-parent": [],
+        "T08-allowlisted-image": [],
+        "T08-toctou-mismatch": [],
+        "T08-benign-lookalike": [],
+        "T09-baseline": [
+          "Set Setuid or Setgid bit",
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T09-stale-capability": [
+          "Set Setuid or Setgid bit",
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T09-post-exec-privilege": [
+          "Set Setuid or Setgid bit",
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T09-renamed-binary": [
+          "Set Setuid or Setgid bit",
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T09-missing-parent": [
+          "Set Setuid or Setgid bit",
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T09-allowlisted-image": [],
+        "T09-toctou-mismatch": [],
+        "T09-benign-lookalike": [],
+        "T10-baseline": [
+          "Schedule Cron Jobs",
+          "DB program spawned process",
+          "Program run with disallowed http proxy env",
+          "User mgmt binaries",
+          "Launch Package Management Process in Container",
+          "Launch Suspicious Network Tool in Container",
+          "Launch Suspicious Network Tool on Host",
+          "Launch Remote File Copy Tools in Container",
+          "Launch Ingress Remote File Copy Tools in Container",
+          "Potential Local Privilege Escalation via Environment Variables Misuse",
+          "Detect crypto miners using the Stratum protocol",
+          "Kubernetes Client Tool Launched in Container",
+          "Sudo Potential Privilege Escalation",
+          "Polkit Local Privilege Escalation Vulnerability (CVE-2021-4034)",
+          "Decoding Payload in Container",
+          "Basic Interactive Reconnaissance",
+          "Netcat/Socat Remote Code Execution on Host",
+          "Network Tool Executed During NPM Package Install",
+          "Known Cryptominer Process Executed",
+          "Web Server Spawned Shell",
+          "Web Server Spawned Suspicious Child Process",
+          "Reverse Shell from Web Server",
+          "GPU Management Tool Run in Container",
+          "Run shell untrusted",
+          "System user interactive",
+          "Terminal shell in container",
+          "Netcat Remote Code Execution in Container",
+          "Search Private Keys or Passwords",
+          "Remove Bulk Data from Disk",
+          "Find AWS Credentials",
+          "Execution from /dev/shm",
+          "Drop and execute new binary in container",
+          "Fileless execution via memfd_create"
+        ],
+        "T10-stale-capability": [
+          "Schedule Cron Jobs",
+          "DB program spawned process",
+          "Program run with disallowed http proxy env",
+          "User mgmt binaries",
+          "Launch Package Management Process in Container",
+          "Launch Suspicious Network Tool in Container",
+          "Launch Suspicious Network Tool on Host",
+          "Launch Remote File Copy Tools in Container",
+          "Launch Ingress Remote File Copy Tools in Container",
+          "Potential Local Privilege Escalation via Environment Variables Misuse",
+          "Detect crypto miners using the Stratum protocol",
+          "Kubernetes Client Tool Launched in Container",
+          "Sudo Potential Privilege Escalation",
+          "Polkit Local Privilege Escalation Vulnerability (CVE-2021-4034)",
+          "Decoding Payload in Container",
+          "Basic Interactive Reconnaissance",
+          "Netcat/Socat Remote Code Execution on Host",
+          "Network Tool Executed During NPM Package Install",
+          "Known Cryptominer Process Executed",
+          "Web Server Spawned Shell",
+          "Web Server Spawned Suspicious Child Process",
+          "Reverse Shell from Web Server",
+          "GPU Management Tool Run in Container",
+          "Run shell untrusted",
+          "System user interactive",
+          "Terminal shell in container",
+          "Netcat Remote Code Execution in Container",
+          "Search Private Keys or Passwords",
+          "Remove Bulk Data from Disk",
+          "Find AWS Credentials",
+          "Execution from /dev/shm",
+          "Drop and execute new binary in container",
+          "Fileless execution via memfd_create"
+        ],
+        "T10-post-exec-privilege": [
+          "Schedule Cron Jobs",
+          "DB program spawned process",
+          "Program run with disallowed http proxy env",
+          "User mgmt binaries",
+          "Launch Package Management Process in Container",
+          "Launch Suspicious Network Tool in Container",
+          "Launch Suspicious Network Tool on Host",
+          "Launch Remote File Copy Tools in Container",
+          "Launch Ingress Remote File Copy Tools in Container",
+          "Potential Local Privilege Escalation via Environment Variables Misuse",
+          "Detect crypto miners using the Stratum protocol",
+          "Kubernetes Client Tool Launched in Container",
+          "Sudo Potential Privilege Escalation",
+          "Polkit Local Privilege Escalation Vulnerability (CVE-2021-4034)",
+          "Decoding Payload in Container",
+          "Basic Interactive Reconnaissance",
+          "Netcat/Socat Remote Code Execution on Host",
+          "Network Tool Executed During NPM Package Install",
+          "Known Cryptominer Process Executed",
+          "Web Server Spawned Shell",
+          "Web Server Spawned Suspicious Child Process",
+          "Reverse Shell from Web Server",
+          "GPU Management Tool Run in Container",
+          "Run shell untrusted",
+          "System user interactive",
+          "Terminal shell in container",
+          "Netcat Remote Code Execution in Container",
+          "Search Private Keys or Passwords",
+          "Remove Bulk Data from Disk",
+          "Find AWS Credentials",
+          "Execution from /dev/shm",
+          "Drop and execute new binary in container",
+          "Fileless execution via memfd_create"
+        ],
+        "T10-renamed-binary": [
+          "Schedule Cron Jobs",
+          "DB program spawned process",
+          "Program run with disallowed http proxy env",
+          "User mgmt binaries",
+          "Launch Package Management Process in Container",
+          "Launch Suspicious Network Tool in Container",
+          "Launch Suspicious Network Tool on Host",
+          "Launch Remote File Copy Tools in Container",
+          "Launch Ingress Remote File Copy Tools in Container",
+          "Potential Local Privilege Escalation via Environment Variables Misuse",
+          "Detect crypto miners using the Stratum protocol",
+          "Kubernetes Client Tool Launched in Container",
+          "Sudo Potential Privilege Escalation",
+          "Polkit Local Privilege Escalation Vulnerability (CVE-2021-4034)",
+          "Decoding Payload in Container",
+          "Basic Interactive Reconnaissance",
+          "Netcat/Socat Remote Code Execution on Host",
+          "Network Tool Executed During NPM Package Install",
+          "Known Cryptominer Process Executed",
+          "Web Server Spawned Shell",
+          "Web Server Spawned Suspicious Child Process",
+          "Reverse Shell from Web Server",
+          "GPU Management Tool Run in Container",
+          "Run shell untrusted",
+          "System user interactive",
+          "Terminal shell in container",
+          "Netcat Remote Code Execution in Container",
+          "Search Private Keys or Passwords",
+          "Remove Bulk Data from Disk",
+          "Find AWS Credentials",
+          "Execution from /dev/shm",
+          "Drop and execute new binary in container",
+          "Fileless execution via memfd_create"
+        ],
+        "T10-missing-parent": [
+          "Schedule Cron Jobs",
+          "DB program spawned process",
+          "Program run with disallowed http proxy env",
+          "User mgmt binaries",
+          "Launch Package Management Process in Container",
+          "Launch Suspicious Network Tool in Container",
+          "Launch Suspicious Network Tool on Host",
+          "Launch Remote File Copy Tools in Container",
+          "Launch Ingress Remote File Copy Tools in Container",
+          "Potential Local Privilege Escalation via Environment Variables Misuse",
+          "Detect crypto miners using the Stratum protocol",
+          "Kubernetes Client Tool Launched in Container",
+          "Sudo Potential Privilege Escalation",
+          "Polkit Local Privilege Escalation Vulnerability (CVE-2021-4034)",
+          "Decoding Payload in Container",
+          "Basic Interactive Reconnaissance",
+          "Netcat/Socat Remote Code Execution on Host",
+          "Network Tool Executed During NPM Package Install",
+          "Known Cryptominer Process Executed",
+          "Web Server Spawned Shell",
+          "Web Server Spawned Suspicious Child Process",
+          "Reverse Shell from Web Server",
+          "GPU Management Tool Run in Container",
+          "Run shell untrusted",
+          "System user interactive",
+          "Terminal shell in container",
+          "Netcat Remote Code Execution in Container",
+          "Search Private Keys or Passwords",
+          "Remove Bulk Data from Disk",
+          "Find AWS Credentials",
+          "Execution from /dev/shm",
+          "Drop and execute new binary in container",
+          "Fileless execution via memfd_create"
+        ],
+        "T10-allowlisted-image": [
+          "Potential Local Privilege Escalation via Environment Variables Misuse",
+          "Detect crypto miners using the Stratum protocol",
+          "Sudo Potential Privilege Escalation",
+          "Polkit Local Privilege Escalation Vulnerability (CVE-2021-4034)",
+          "Basic Interactive Reconnaissance",
+          "Netcat/Socat Remote Code Execution on Host",
+          "Known Cryptominer Process Executed",
+          "Reverse Shell from Web Server",
+          "Terminal shell in container",
+          "Netcat Remote Code Execution in Container",
+          "Search Private Keys or Passwords",
+          "Find AWS Credentials",
+          "Fileless execution via memfd_create"
+        ],
+        "T10-toctou-mismatch": [],
+        "T10-benign-lookalike": [
+          "Potential Local Privilege Escalation via Environment Variables Misuse",
+          "Detect crypto miners using the Stratum protocol",
+          "Sudo Potential Privilege Escalation",
+          "Polkit Local Privilege Escalation Vulnerability (CVE-2021-4034)",
+          "Basic Interactive Reconnaissance",
+          "Netcat/Socat Remote Code Execution on Host",
+          "Known Cryptominer Process Executed",
+          "Reverse Shell from Web Server",
+          "Terminal shell in container",
+          "Netcat Remote Code Execution in Container",
+          "Search Private Keys or Passwords",
+          "Find AWS Credentials",
+          "Fileless execution via memfd_create"
+        ],
+        "T11-baseline": [
+          "Linux Kernel Module Injection Detected"
+        ],
+        "T11-stale-capability": [],
+        "T11-post-exec-privilege": [],
+        "T11-renamed-binary": [
+          "Linux Kernel Module Injection Detected"
+        ],
+        "T11-missing-parent": [
+          "Linux Kernel Module Injection Detected"
+        ],
+        "T11-allowlisted-image": [],
+        "T11-toctou-mismatch": [
+          "Linux Kernel Module Injection Detected"
+        ],
+        "T11-benign-lookalike": [],
+        "T12-baseline": [
+          "BPF Program Not Profiled"
+        ],
+        "T12-stale-capability": [
+          "BPF Program Not Profiled"
+        ],
+        "T12-post-exec-privilege": [
+          "BPF Program Not Profiled"
+        ],
+        "T12-renamed-binary": [
+          "BPF Program Not Profiled"
+        ],
+        "T12-missing-parent": [
+          "BPF Program Not Profiled"
+        ],
+        "T12-allowlisted-image": [
+          "BPF Program Not Profiled"
+        ],
+        "T12-toctou-mismatch": [],
+        "T12-benign-lookalike": [
+          "BPF Program Not Profiled"
+        ],
+        "T13-baseline": [
+          "PTRACE attached to process",
+          "PTRACE anti-debug attempt"
+        ],
+        "T13-stale-capability": [
+          "PTRACE attached to process",
+          "PTRACE anti-debug attempt"
+        ],
+        "T13-post-exec-privilege": [
+          "PTRACE attached to process",
+          "PTRACE anti-debug attempt"
+        ],
+        "T13-renamed-binary": [
+          "PTRACE attached to process",
+          "PTRACE anti-debug attempt"
+        ],
+        "T13-missing-parent": [],
+        "T13-allowlisted-image": [
+          "PTRACE attached to process",
+          "PTRACE anti-debug attempt"
+        ],
+        "T13-toctou-mismatch": [
+          "PTRACE attached to process"
+        ],
+        "T13-benign-lookalike": [
+          "PTRACE attached to process",
+          "PTRACE anti-debug attempt"
+        ],
+        "T14-baseline": [
+          "Fileless execution via memfd_create"
+        ],
+        "T14-stale-capability": [
+          "Fileless execution via memfd_create"
+        ],
+        "T14-post-exec-privilege": [
+          "Fileless execution via memfd_create"
+        ],
+        "T14-renamed-binary": [
+          "Fileless execution via memfd_create"
+        ],
+        "T14-missing-parent": [
+          "Fileless execution via memfd_create"
+        ],
+        "T14-allowlisted-image": [
+          "Fileless execution via memfd_create"
+        ],
+        "T14-toctou-mismatch": [],
+        "T14-benign-lookalike": [
+          "Fileless execution via memfd_create"
+        ],
+        "T15-baseline": [
+          "Mount Launched in Privileged Container",
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T15-stale-capability": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T15-post-exec-privilege": [
+          "Mount Launched in Privileged Container",
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T15-renamed-binary": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T15-missing-parent": [
+          "Mount Launched in Privileged Container",
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T15-allowlisted-image": [
+          "Launch Sensitive Mount Container",
+          "Debugfs Launched in Privileged Container"
+        ],
+        "T15-toctou-mismatch": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T15-benign-lookalike": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T16-baseline": [
+          "Modify Shell Configuration File",
+          "Modify Python Startup Hook File",
+          "Schedule Cron Jobs",
+          "Read ssh information",
+          "Create files below dev",
+          "Read environment variable from /proc files",
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Adding ssh keys to authorized_keys",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Read Shell Configuration File",
+          "Update Package Repository",
+          "Write below binary dir",
+          "Write below monitored dir",
+          "Write below etc",
+          "Write below root",
+          "Write below rpm database",
+          "Create Hidden Files or Directories",
+          "Modify Container Entrypoint",
+          "Privileged Container Device Access",
+          "Container Access to Host Sensitive Paths",
+          "Container Accessing GPU Device",
+          "Directory traversal monitored file read",
+          "Read sensitive file trusted after startup",
+          "Read sensitive file untrusted",
+          "Clear Log Activities",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T16-stale-capability": [
+          "Modify Shell Configuration File",
+          "Modify Python Startup Hook File",
+          "Schedule Cron Jobs",
+          "Read ssh information",
+          "Create files below dev",
+          "Read environment variable from /proc files",
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Adding ssh keys to authorized_keys",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Read Shell Configuration File",
+          "Update Package Repository",
+          "Write below binary dir",
+          "Write below monitored dir",
+          "Write below etc",
+          "Write below root",
+          "Write below rpm database",
+          "Create Hidden Files or Directories",
+          "Modify Container Entrypoint",
+          "Privileged Container Device Access",
+          "Container Access to Host Sensitive Paths",
+          "Container Accessing GPU Device",
+          "Directory traversal monitored file read",
+          "Read sensitive file trusted after startup",
+          "Read sensitive file untrusted",
+          "Clear Log Activities"
+        ],
+        "T16-post-exec-privilege": [
+          "Modify Shell Configuration File",
+          "Modify Python Startup Hook File",
+          "Schedule Cron Jobs",
+          "Read ssh information",
+          "Create files below dev",
+          "Read environment variable from /proc files",
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Adding ssh keys to authorized_keys",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Read Shell Configuration File",
+          "Update Package Repository",
+          "Write below binary dir",
+          "Write below monitored dir",
+          "Write below etc",
+          "Write below root",
+          "Write below rpm database",
+          "Create Hidden Files or Directories",
+          "Modify Container Entrypoint",
+          "Privileged Container Device Access",
+          "Container Access to Host Sensitive Paths",
+          "Container Accessing GPU Device",
+          "Directory traversal monitored file read",
+          "Read sensitive file untrusted",
+          "Clear Log Activities"
+        ],
+        "T16-renamed-binary": [
+          "Modify Shell Configuration File",
+          "Modify Python Startup Hook File",
+          "Schedule Cron Jobs",
+          "Read ssh information",
+          "Create files below dev",
+          "Read environment variable from /proc files",
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Adding ssh keys to authorized_keys",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Read Shell Configuration File",
+          "Update Package Repository",
+          "Write below binary dir",
+          "Write below monitored dir",
+          "Write below etc",
+          "Write below root",
+          "Write below rpm database",
+          "Create Hidden Files or Directories",
+          "Modify Container Entrypoint",
+          "Privileged Container Device Access",
+          "Container Access to Host Sensitive Paths",
+          "Container Accessing GPU Device",
+          "Directory traversal monitored file read",
+          "Read sensitive file trusted after startup",
+          "Read sensitive file untrusted",
+          "Clear Log Activities",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T16-missing-parent": [
+          "Modify Shell Configuration File",
+          "Modify Python Startup Hook File",
+          "Schedule Cron Jobs",
+          "Read ssh information",
+          "Create files below dev",
+          "Read environment variable from /proc files",
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Adding ssh keys to authorized_keys",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Read Shell Configuration File",
+          "Update Package Repository",
+          "Write below binary dir",
+          "Write below monitored dir",
+          "Write below etc",
+          "Write below rpm database",
+          "Create Hidden Files or Directories",
+          "Modify Container Entrypoint",
+          "Privileged Container Device Access",
+          "Container Access to Host Sensitive Paths",
+          "Container Accessing GPU Device",
+          "Directory traversal monitored file read",
+          "Read sensitive file trusted after startup",
+          "Clear Log Activities",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T16-allowlisted-image": [
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Write below etc",
+          "Modify Container Entrypoint",
+          "Detect release_agent File Container Escapes"
+        ],
+        "T16-toctou-mismatch": [
+          "Read ssh information",
+          "Read environment variable from /proc files",
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Read Shell Configuration File",
+          "Write below etc",
+          "Container Accessing GPU Device",
+          "Directory traversal monitored file read",
+          "Read sensitive file trusted after startup"
+        ],
+        "T16-benign-lookalike": [
+          "Exfiltrating Artifacts via Kubernetes Control Plane",
+          "Backdoored library loaded into SSHD (CVE-2024-3094)",
+          "Write below etc",
+          "Modify Container Entrypoint"
+        ],
+        "T17-baseline": [
+          "Launch Excessively Capable Container",
+          "Privileged Container Device Access"
+        ],
+        "T17-stale-capability": [
+          "Launch Excessively Capable Container",
+          "Privileged Container Device Access"
+        ],
+        "T17-post-exec-privilege": [
+          "Launch Excessively Capable Container",
+          "Privileged Container Device Access"
+        ],
+        "T17-renamed-binary": [
+          "Launch Excessively Capable Container",
+          "Privileged Container Device Access"
+        ],
+        "T17-missing-parent": [
+          "Launch Excessively Capable Container",
+          "Privileged Container Device Access"
+        ],
+        "T17-allowlisted-image": [
+          "Launch Excessively Capable Container"
+        ],
+        "T17-toctou-mismatch": [
+          "Launch Excessively Capable Container"
+        ],
+        "T17-benign-lookalike": [
+          "Launch Excessively Capable Container"
+        ],
+        "T18-baseline": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T18-stale-capability": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T18-post-exec-privilege": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T18-renamed-binary": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T18-missing-parent": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T18-allowlisted-image": [],
+        "T18-toctou-mismatch": [],
+        "T18-benign-lookalike": [],
+        "T19-baseline": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T19-stale-capability": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T19-post-exec-privilege": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T19-renamed-binary": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T19-missing-parent": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T19-allowlisted-image": [],
+        "T19-toctou-mismatch": [],
+        "T19-benign-lookalike": [],
+        "T20-baseline": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T20-stale-capability": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T20-post-exec-privilege": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T20-renamed-binary": [],
+        "T20-missing-parent": [
+          "Schedule Cron Jobs",
+          "Adding ssh keys to authorized_keys"
+        ],
+        "T20-allowlisted-image": [],
+        "T20-toctou-mismatch": [],
+        "T20-benign-lookalike": [],
+        "T21-baseline": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T21-stale-capability": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T21-post-exec-privilege": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T21-renamed-binary": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T21-missing-parent": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T21-allowlisted-image": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T21-toctou-mismatch": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T21-benign-lookalike": [
+          "Launch Sensitive Mount Container"
+        ],
+        "T22-baseline": [
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T22-stale-capability": [
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T22-post-exec-privilege": [
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T22-renamed-binary": [
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T22-missing-parent": [
+          "Unprivileged Delegation of Page Faults Handling to a Userspace Process"
+        ],
+        "T22-allowlisted-image": [],
+        "T22-toctou-mismatch": [],
+        "T22-benign-lookalike": [],
+        "T23-baseline": [],
+        "T23-stale-capability": [],
+        "T23-post-exec-privilege": [],
+        "T23-renamed-binary": [],
+        "T23-missing-parent": [],
+        "T23-allowlisted-image": [],
+        "T23-toctou-mismatch": [],
+        "T23-benign-lookalike": [],
+        "T24-baseline": [
+          "Read environment variable from /proc files",
+          "Write below etc"
+        ],
+        "T24-stale-capability": [
+          "Read environment variable from /proc files",
+          "Write below etc"
+        ],
+        "T24-post-exec-privilege": [
+          "Read environment variable from /proc files",
+          "Write below etc"
+        ],
+        "T24-renamed-binary": [
+          "Write below etc"
+        ],
+        "T24-missing-parent": [
+          "Read environment variable from /proc files",
+          "Write below etc"
+        ],
+        "T24-allowlisted-image": [
+          "Write below etc"
+        ],
+        "T24-toctou-mismatch": [
+          "Read environment variable from /proc files",
+          "Write below etc"
+        ],
+        "T24-benign-lookalike": [
+          "Write below etc"
+        ],
+        "T25-baseline": [
+          "Change thread namespace"
+        ],
+        "T25-stale-capability": [
+          "Change thread namespace"
+        ],
+        "T25-post-exec-privilege": [
+          "Change thread namespace"
+        ],
+        "T25-renamed-binary": [],
+        "T25-missing-parent": [],
+        "T25-allowlisted-image": [],
+        "T25-toctou-mismatch": [],
+        "T25-benign-lookalike": []
+      }
+    },
+    "Tetragon": {
+      "rules": 109,
+      "by_variant": {
+        "baseline": {
+          "events": 25,
+          "fired": 11,
+          "rate": 0.44
+        },
+        "stale-capability": {
+          "events": 25,
+          "fired": 11,
+          "rate": 0.44
+        },
+        "post-exec-privilege": {
+          "events": 25,
+          "fired": 11,
+          "rate": 0.44
+        },
+        "renamed-binary": {
+          "events": 25,
+          "fired": 11,
+          "rate": 0.44
+        },
+        "missing-parent": {
+          "events": 25,
+          "fired": 11,
+          "rate": 0.44
+        },
+        "allowlisted-image": {
+          "events": 25,
+          "fired": 7,
+          "rate": 0.28
+        },
+        "toctou-mismatch": {
+          "events": 25,
+          "fired": 2,
+          "rate": 0.08
+        },
+        "benign-lookalike": {
+          "events": 25,
+          "fired": 7,
+          "rate": 0.28
+        }
+      },
+      "anchor_drop": {
+        "stale-capability": 0.0,
+        "post-exec-privilege": 0.0,
+        "renamed-binary": 0.0,
+        "missing-parent": 0.0,
+        "allowlisted-image": 0.16,
+        "toctou-mismatch": 0.36
+      },
+      "overall": {
+        "tp": 64,
+        "fn": 111,
+        "fp": 7,
+        "tn": 18,
+        "precision": 0.9014,
+        "recall": 0.3657,
+        "f1": 0.5203,
+        "fpr": 0.28
+      },
+      "fired_by_event": {
+        "T01-baseline": [],
+        "T01-stale-capability": [],
+        "T01-post-exec-privilege": [],
+        "T01-renamed-binary": [],
+        "T01-missing-parent": [],
+        "T01-allowlisted-image": [],
+        "T01-toctou-mismatch": [],
+        "T01-benign-lookalike": [],
+        "T02-baseline": [],
+        "T02-stale-capability": [],
+        "T02-post-exec-privilege": [],
+        "T02-renamed-binary": [],
+        "T02-missing-parent": [],
+        "T02-allowlisted-image": [],
+        "T02-toctou-mismatch": [],
+        "T02-benign-lookalike": [],
+        "T03-baseline": [],
+        "T03-stale-capability": [],
+        "T03-post-exec-privilege": [],
+        "T03-renamed-binary": [],
+        "T03-missing-parent": [],
+        "T03-allowlisted-image": [],
+        "T03-toctou-mismatch": [],
+        "T03-benign-lookalike": [],
+        "T04-baseline": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T04-stale-capability": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T04-post-exec-privilege": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T04-renamed-binary": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T04-missing-parent": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T04-allowlisted-image": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T04-toctou-mismatch": [],
+        "T04-benign-lookalike": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T05-baseline": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T05-stale-capability": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T05-post-exec-privilege": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T05-renamed-binary": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T05-missing-parent": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T05-allowlisted-image": [],
+        "T05-toctou-mismatch": [],
+        "T05-benign-lookalike": [],
+        "T06-baseline": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T06-stale-capability": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T06-post-exec-privilege": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T06-renamed-binary": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T06-missing-parent": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T06-allowlisted-image": [],
+        "T06-toctou-mismatch": [],
+        "T06-benign-lookalike": [],
+        "T07-baseline": [],
+        "T07-stale-capability": [],
+        "T07-post-exec-privilege": [],
+        "T07-renamed-binary": [],
+        "T07-missing-parent": [],
+        "T07-allowlisted-image": [],
+        "T07-toctou-mismatch": [],
+        "T07-benign-lookalike": [],
+        "T08-baseline": [],
+        "T08-stale-capability": [],
+        "T08-post-exec-privilege": [],
+        "T08-renamed-binary": [],
+        "T08-missing-parent": [],
+        "T08-allowlisted-image": [],
+        "T08-toctou-mismatch": [],
+        "T08-benign-lookalike": [],
+        "T09-baseline": [
+          "commit-creds/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[1]:override_creds",
+          "process-creds-changed/kprobes[2]:revert_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process.credentials.changes.at.syscalls/kprobes[0]:sys_setuid",
+          "process.credentials.changes.at.syscalls/kprobes[1]:sys_setgid",
+          "process.credentials.changes.at.syscalls/kprobes[2]:sys_setreuid",
+          "process.credentials.changes.at.syscalls/kprobes[3]:sys_setregid",
+          "process.credentials.changes.at.syscalls/kprobes[4]:sys_setresuid",
+          "process.credentials.changes.at.syscalls/kprobes[5]:sys_setresgid",
+          "process.credentials.changes.at.syscalls/kprobes[6]:sys_setfsuid",
+          "process.credentials.changes.at.syscalls/kprobes[7]:sys_setfsgid",
+          "syscalls/kprobes[0]:sys_setuid"
+        ],
+        "T09-stale-capability": [
+          "commit-creds/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[1]:override_creds",
+          "process-creds-changed/kprobes[2]:revert_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process.credentials.changes.at.syscalls/kprobes[0]:sys_setuid",
+          "process.credentials.changes.at.syscalls/kprobes[1]:sys_setgid",
+          "process.credentials.changes.at.syscalls/kprobes[2]:sys_setreuid",
+          "process.credentials.changes.at.syscalls/kprobes[3]:sys_setregid",
+          "process.credentials.changes.at.syscalls/kprobes[4]:sys_setresuid",
+          "process.credentials.changes.at.syscalls/kprobes[5]:sys_setresgid",
+          "process.credentials.changes.at.syscalls/kprobes[6]:sys_setfsuid",
+          "process.credentials.changes.at.syscalls/kprobes[7]:sys_setfsgid",
+          "syscalls/kprobes[0]:sys_setuid"
+        ],
+        "T09-post-exec-privilege": [
+          "commit-creds/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[1]:override_creds",
+          "process-creds-changed/kprobes[2]:revert_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process.credentials.changes.at.syscalls/kprobes[0]:sys_setuid",
+          "process.credentials.changes.at.syscalls/kprobes[1]:sys_setgid",
+          "process.credentials.changes.at.syscalls/kprobes[2]:sys_setreuid",
+          "process.credentials.changes.at.syscalls/kprobes[3]:sys_setregid",
+          "process.credentials.changes.at.syscalls/kprobes[4]:sys_setresuid",
+          "process.credentials.changes.at.syscalls/kprobes[5]:sys_setresgid",
+          "process.credentials.changes.at.syscalls/kprobes[6]:sys_setfsuid",
+          "process.credentials.changes.at.syscalls/kprobes[7]:sys_setfsgid",
+          "syscalls/kprobes[0]:sys_setuid"
+        ],
+        "T09-renamed-binary": [
+          "commit-creds/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[1]:override_creds",
+          "process-creds-changed/kprobes[2]:revert_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process.credentials.changes.at.syscalls/kprobes[0]:sys_setuid",
+          "process.credentials.changes.at.syscalls/kprobes[1]:sys_setgid",
+          "process.credentials.changes.at.syscalls/kprobes[2]:sys_setreuid",
+          "process.credentials.changes.at.syscalls/kprobes[3]:sys_setregid",
+          "process.credentials.changes.at.syscalls/kprobes[4]:sys_setresuid",
+          "process.credentials.changes.at.syscalls/kprobes[5]:sys_setresgid",
+          "process.credentials.changes.at.syscalls/kprobes[6]:sys_setfsuid",
+          "process.credentials.changes.at.syscalls/kprobes[7]:sys_setfsgid",
+          "syscalls/kprobes[0]:sys_setuid"
+        ],
+        "T09-missing-parent": [
+          "commit-creds/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[1]:override_creds",
+          "process-creds-changed/kprobes[2]:revert_creds",
+          "process-creds-changed/kprobes[0]:commit_creds",
+          "process.credentials.changes.at.syscalls/kprobes[0]:sys_setuid",
+          "process.credentials.changes.at.syscalls/kprobes[1]:sys_setgid",
+          "process.credentials.changes.at.syscalls/kprobes[2]:sys_setreuid",
+          "process.credentials.changes.at.syscalls/kprobes[3]:sys_setregid",
+          "process.credentials.changes.at.syscalls/kprobes[4]:sys_setresuid",
+          "process.credentials.changes.at.syscalls/kprobes[5]:sys_setresgid",
+          "process.credentials.changes.at.syscalls/kprobes[6]:sys_setfsuid",
+          "process.credentials.changes.at.syscalls/kprobes[7]:sys_setfsgid",
+          "syscalls/kprobes[0]:sys_setuid"
+        ],
+        "T09-allowlisted-image": [
+          "commit-creds/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[1]:override_creds",
+          "process-creds-changed/kprobes[2]:revert_creds",
+          "syscalls/kprobes[0]:sys_setuid"
+        ],
+        "T09-toctou-mismatch": [],
+        "T09-benign-lookalike": [
+          "commit-creds/kprobes[0]:commit_creds",
+          "process-creds-changed/kprobes[1]:override_creds",
+          "process-creds-changed/kprobes[2]:revert_creds",
+          "syscalls/kprobes[0]:sys_setuid"
+        ],
+        "T10-baseline": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "rawtp/tracepoints[0]:sched_process_exec"
+        ],
+        "T10-stale-capability": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "rawtp/tracepoints[0]:sched_process_exec"
+        ],
+        "T10-post-exec-privilege": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "rawtp/tracepoints[0]:sched_process_exec"
+        ],
+        "T10-renamed-binary": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "rawtp/tracepoints[0]:sched_process_exec"
+        ],
+        "T10-missing-parent": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "rawtp/tracepoints[0]:sched_process_exec"
+        ],
+        "T10-allowlisted-image": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "rawtp/tracepoints[0]:sched_process_exec"
+        ],
+        "T10-toctou-mismatch": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "lsm/lsmhooks[0]:bprm_check_security"
+        ],
+        "T10-benign-lookalike": [
+          "lsm/lsmhooks[0]:bprm_check_security",
+          "rawtp/tracepoints[0]:sched_process_exec"
+        ],
+        "T11-baseline": [
+          "monitor-kernel-modules/kprobes[0]:security_kernel_module_request",
+          "monitor-kernel-modules/kprobes[1]:security_kernel_read_file",
+          "monitor-kernel-modules/kprobes[2]:do_init_module",
+          "monitor-kernel-modules/kprobes[3]:free_module"
+        ],
+        "T11-stale-capability": [
+          "monitor-kernel-modules/kprobes[0]:security_kernel_module_request",
+          "monitor-kernel-modules/kprobes[1]:security_kernel_read_file",
+          "monitor-kernel-modules/kprobes[2]:do_init_module",
+          "monitor-kernel-modules/kprobes[3]:free_module"
+        ],
+        "T11-post-exec-privilege": [
+          "monitor-kernel-modules/kprobes[0]:security_kernel_module_request",
+          "monitor-kernel-modules/kprobes[1]:security_kernel_read_file",
+          "monitor-kernel-modules/kprobes[2]:do_init_module",
+          "monitor-kernel-modules/kprobes[3]:free_module"
+        ],
+        "T11-renamed-binary": [
+          "monitor-kernel-modules/kprobes[0]:security_kernel_module_request",
+          "monitor-kernel-modules/kprobes[1]:security_kernel_read_file",
+          "monitor-kernel-modules/kprobes[2]:do_init_module",
+          "monitor-kernel-modules/kprobes[3]:free_module"
+        ],
+        "T11-missing-parent": [
+          "monitor-kernel-modules/kprobes[0]:security_kernel_module_request",
+          "monitor-kernel-modules/kprobes[1]:security_kernel_read_file",
+          "monitor-kernel-modules/kprobes[2]:do_init_module",
+          "monitor-kernel-modules/kprobes[3]:free_module"
+        ],
+        "T11-allowlisted-image": [
+          "monitor-kernel-modules/kprobes[0]:security_kernel_module_request",
+          "monitor-kernel-modules/kprobes[1]:security_kernel_read_file",
+          "monitor-kernel-modules/kprobes[2]:do_init_module",
+          "monitor-kernel-modules/kprobes[3]:free_module"
+        ],
+        "T11-toctou-mismatch": [],
+        "T11-benign-lookalike": [
+          "monitor-kernel-modules/kprobes[0]:security_kernel_module_request",
+          "monitor-kernel-modules/kprobes[1]:security_kernel_read_file",
+          "monitor-kernel-modules/kprobes[2]:do_init_module",
+          "monitor-kernel-modules/kprobes[3]:free_module"
+        ],
+        "T12-baseline": [
+          "bpf/kprobes[0]:bpf_check",
+          "bpf/kprobes[1]:security_perf_event_alloc",
+          "bpf/kprobes[2]:security_bpf_map_alloc",
+          "bpf/kprobes[3]:security_bpf_map_create"
+        ],
+        "T12-stale-capability": [
+          "bpf/kprobes[0]:bpf_check",
+          "bpf/kprobes[1]:security_perf_event_alloc",
+          "bpf/kprobes[2]:security_bpf_map_alloc",
+          "bpf/kprobes[3]:security_bpf_map_create"
+        ],
+        "T12-post-exec-privilege": [
+          "bpf/kprobes[0]:bpf_check",
+          "bpf/kprobes[1]:security_perf_event_alloc",
+          "bpf/kprobes[2]:security_bpf_map_alloc",
+          "bpf/kprobes[3]:security_bpf_map_create"
+        ],
+        "T12-renamed-binary": [
+          "bpf/kprobes[0]:bpf_check",
+          "bpf/kprobes[1]:security_perf_event_alloc",
+          "bpf/kprobes[2]:security_bpf_map_alloc",
+          "bpf/kprobes[3]:security_bpf_map_create"
+        ],
+        "T12-missing-parent": [
+          "bpf/kprobes[0]:bpf_check",
+          "bpf/kprobes[1]:security_perf_event_alloc",
+          "bpf/kprobes[2]:security_bpf_map_alloc",
+          "bpf/kprobes[3]:security_bpf_map_create"
+        ],
+        "T12-allowlisted-image": [
+          "bpf/kprobes[0]:bpf_check",
+          "bpf/kprobes[1]:security_perf_event_alloc",
+          "bpf/kprobes[2]:security_bpf_map_alloc",
+          "bpf/kprobes[3]:security_bpf_map_create"
+        ],
+        "T12-toctou-mismatch": [],
+        "T12-benign-lookalike": [
+          "bpf/kprobes[0]:bpf_check",
+          "bpf/kprobes[1]:security_perf_event_alloc",
+          "bpf/kprobes[2]:security_bpf_map_alloc",
+          "bpf/kprobes[3]:security_bpf_map_create"
+        ],
+        "T13-baseline": [
+          "syscalls/kprobes[0]:sys_ptrace"
+        ],
+        "T13-stale-capability": [
+          "syscalls/kprobes[0]:sys_ptrace"
+        ],
+        "T13-post-exec-privilege": [
+          "syscalls/kprobes[0]:sys_ptrace"
+        ],
+        "T13-renamed-binary": [
+          "syscalls/kprobes[0]:sys_ptrace"
+        ],
+        "T13-missing-parent": [
+          "syscalls/kprobes[0]:sys_ptrace"
+        ],
+        "T13-allowlisted-image": [
+          "syscalls/kprobes[0]:sys_ptrace"
+        ],
+        "T13-toctou-mismatch": [],
+        "T13-benign-lookalike": [
+          "syscalls/kprobes[0]:sys_ptrace"
+        ],
+        "T14-baseline": [],
+        "T14-stale-capability": [],
+        "T14-post-exec-privilege": [],
+        "T14-renamed-binary": [],
+        "T14-missing-parent": [],
+        "T14-allowlisted-image": [],
+        "T14-toctou-mismatch": [],
+        "T14-benign-lookalike": [],
+        "T15-baseline": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T15-stale-capability": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T15-post-exec-privilege": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T15-renamed-binary": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T15-missing-parent": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T15-allowlisted-image": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T15-toctou-mismatch": [],
+        "T15-benign-lookalike": [
+          "syscalls/kprobes[0]:sys_mount",
+          "sys-pivot-root/kprobes[0]:sys_pivot_root"
+        ],
+        "T16-baseline": [
+          "lsm-file-open/lsmhooks[0]:file_open"
+        ],
+        "T16-stale-capability": [
+          "lsm-file-open/lsmhooks[0]:file_open"
+        ],
+        "T16-post-exec-privilege": [
+          "lsm-file-open/lsmhooks[0]:file_open"
+        ],
+        "T16-renamed-binary": [
+          "lsm-file-open/lsmhooks[0]:file_open"
+        ],
+        "T16-missing-parent": [
+          "lsm-file-open/lsmhooks[0]:file_open"
+        ],
+        "T16-allowlisted-image": [],
+        "T16-toctou-mismatch": [
+          "lsm-file-open/lsmhooks[0]:file_open"
+        ],
+        "T16-benign-lookalike": [],
+        "T17-baseline": [],
+        "T17-stale-capability": [],
+        "T17-post-exec-privilege": [],
+        "T17-renamed-binary": [],
+        "T17-missing-parent": [],
+        "T17-allowlisted-image": [],
+        "T17-toctou-mismatch": [],
+        "T17-benign-lookalike": [],
+        "T18-baseline": [],
+        "T18-stale-capability": [],
+        "T18-post-exec-privilege": [],
+        "T18-renamed-binary": [],
+        "T18-missing-parent": [],
+        "T18-allowlisted-image": [],
+        "T18-toctou-mismatch": [],
+        "T18-benign-lookalike": [],
+        "T19-baseline": [],
+        "T19-stale-capability": [],
+        "T19-post-exec-privilege": [],
+        "T19-renamed-binary": [],
+        "T19-missing-parent": [],
+        "T19-allowlisted-image": [],
+        "T19-toctou-mismatch": [],
+        "T19-benign-lookalike": [],
+        "T20-baseline": [],
+        "T20-stale-capability": [],
+        "T20-post-exec-privilege": [],
+        "T20-renamed-binary": [],
+        "T20-missing-parent": [],
+        "T20-allowlisted-image": [],
+        "T20-toctou-mismatch": [],
+        "T20-benign-lookalike": [],
+        "T21-baseline": [],
+        "T21-stale-capability": [],
+        "T21-post-exec-privilege": [],
+        "T21-renamed-binary": [],
+        "T21-missing-parent": [],
+        "T21-allowlisted-image": [],
+        "T21-toctou-mismatch": [],
+        "T21-benign-lookalike": [],
+        "T22-baseline": [],
+        "T22-stale-capability": [],
+        "T22-post-exec-privilege": [],
+        "T22-renamed-binary": [],
+        "T22-missing-parent": [],
+        "T22-allowlisted-image": [],
+        "T22-toctou-mismatch": [],
+        "T22-benign-lookalike": [],
+        "T23-baseline": [],
+        "T23-stale-capability": [],
+        "T23-post-exec-privilege": [],
+        "T23-renamed-binary": [],
+        "T23-missing-parent": [],
+        "T23-allowlisted-image": [],
+        "T23-toctou-mismatch": [],
+        "T23-benign-lookalike": [],
+        "T24-baseline": [],
+        "T24-stale-capability": [],
+        "T24-post-exec-privilege": [],
+        "T24-renamed-binary": [],
+        "T24-missing-parent": [],
+        "T24-allowlisted-image": [],
+        "T24-toctou-mismatch": [],
+        "T24-benign-lookalike": [],
+        "T25-baseline": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T25-stale-capability": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T25-post-exec-privilege": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T25-renamed-binary": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T25-missing-parent": [
+          "fd-install/kprobes[0]:fd_install",
+          "fd-install/kprobes[0]:fd_install"
+        ],
+        "T25-allowlisted-image": [],
+        "T25-toctou-mismatch": [],
+        "T25-benign-lookalike": []
+      }
+    },
+    "Tracee": {
+      "rules": 91,
+      "by_variant": {
+        "baseline": {
+          "events": 25,
+          "fired": 17,
+          "rate": 0.68
+        },
+        "stale-capability": {
+          "events": 25,
+          "fired": 17,
+          "rate": 0.68
+        },
+        "post-exec-privilege": {
+          "events": 25,
+          "fired": 17,
+          "rate": 0.68
+        },
+        "renamed-binary": {
+          "events": 25,
+          "fired": 17,
+          "rate": 0.68
+        },
+        "missing-parent": {
+          "events": 25,
+          "fired": 17,
+          "rate": 0.68
+        },
+        "allowlisted-image": {
+          "events": 25,
+          "fired": 17,
+          "rate": 0.68
+        },
+        "toctou-mismatch": {
+          "events": 25,
+          "fired": 15,
+          "rate": 0.6
+        },
+        "benign-lookalike": {
+          "events": 25,
+          "fired": 17,
+          "rate": 0.68
+        }
+      },
+      "anchor_drop": {
+        "stale-capability": 0.0,
+        "post-exec-privilege": 0.0,
+        "renamed-binary": 0.0,
+        "missing-parent": 0.0,
+        "allowlisted-image": 0.0,
+        "toctou-mismatch": 0.08
+      },
+      "overall": {
+        "tp": 117,
+        "fn": 58,
+        "fp": 17,
+        "tn": 8,
+        "precision": 0.8731,
+        "recall": 0.6686,
+        "f1": 0.7573,
+        "fpr": 0.68
+      },
+      "fired_by_event": {
+        "T01-baseline": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/cgroup_release_agent"
+        ],
+        "T01-stale-capability": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/cgroup_release_agent"
+        ],
+        "T01-post-exec-privilege": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/cgroup_release_agent"
+        ],
+        "T01-renamed-binary": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/cgroup_release_agent"
+        ],
+        "T01-missing-parent": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/cgroup_release_agent"
+        ],
+        "T01-allowlisted-image": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/cgroup_release_agent"
+        ],
+        "T01-toctou-mismatch": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/cgroup_release_agent"
+        ],
+        "T01-benign-lookalike": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T02-baseline": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/core_pattern_modification"
+        ],
+        "T02-stale-capability": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/core_pattern_modification"
+        ],
+        "T02-post-exec-privilege": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/core_pattern_modification"
+        ],
+        "T02-renamed-binary": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/core_pattern_modification"
+        ],
+        "T02-missing-parent": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/core_pattern_modification"
+        ],
+        "T02-allowlisted-image": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/core_pattern_modification"
+        ],
+        "T02-toctou-mismatch": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod",
+          "signature-events/core_pattern_modification"
+        ],
+        "T02-benign-lookalike": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-baseline": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-stale-capability": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-post-exec-privilege": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-renamed-binary": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-missing-parent": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-allowlisted-image": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-toctou-mismatch": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T03-benign-lookalike": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T04-baseline": [
+          "signature-events/disk_mount"
+        ],
+        "T04-stale-capability": [
+          "signature-events/disk_mount"
+        ],
+        "T04-post-exec-privilege": [
+          "signature-events/disk_mount"
+        ],
+        "T04-renamed-binary": [
+          "signature-events/disk_mount"
+        ],
+        "T04-missing-parent": [
+          "signature-events/disk_mount"
+        ],
+        "T04-allowlisted-image": [
+          "signature-events/disk_mount"
+        ],
+        "T04-toctou-mismatch": [
+          "signature-events/disk_mount"
+        ],
+        "T04-benign-lookalike": [
+          "signature-events/disk_mount"
+        ],
+        "T05-baseline": [],
+        "T05-stale-capability": [],
+        "T05-post-exec-privilege": [],
+        "T05-renamed-binary": [],
+        "T05-missing-parent": [],
+        "T05-allowlisted-image": [],
+        "T05-toctou-mismatch": [],
+        "T05-benign-lookalike": [],
+        "T06-baseline": [],
+        "T06-stale-capability": [],
+        "T06-post-exec-privilege": [],
+        "T06-renamed-binary": [],
+        "T06-missing-parent": [],
+        "T06-allowlisted-image": [],
+        "T06-toctou-mismatch": [],
+        "T06-benign-lookalike": [],
+        "T07-baseline": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T07-stale-capability": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T07-post-exec-privilege": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T07-renamed-binary": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T07-missing-parent": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T07-allowlisted-image": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T07-toctou-mismatch": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T07-benign-lookalike": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T08-baseline": [],
+        "T08-stale-capability": [],
+        "T08-post-exec-privilege": [],
+        "T08-renamed-binary": [],
+        "T08-missing-parent": [],
+        "T08-allowlisted-image": [],
+        "T08-toctou-mismatch": [],
+        "T08-benign-lookalike": [],
+        "T09-baseline": [
+          "extend-default-policy/setuid"
+        ],
+        "T09-stale-capability": [
+          "extend-default-policy/setuid"
+        ],
+        "T09-post-exec-privilege": [
+          "extend-default-policy/setuid"
+        ],
+        "T09-renamed-binary": [
+          "extend-default-policy/setuid"
+        ],
+        "T09-missing-parent": [
+          "extend-default-policy/setuid"
+        ],
+        "T09-allowlisted-image": [
+          "extend-default-policy/setuid"
+        ],
+        "T09-toctou-mismatch": [],
+        "T09-benign-lookalike": [
+          "extend-default-policy/setuid"
+        ],
+        "T10-baseline": [
+          "extend-default-policy/sched_process_exec",
+          "comm-strace/sched_process_exec",
+          "comm-strace/sched_process_exec"
+        ],
+        "T10-stale-capability": [
+          "extend-default-policy/sched_process_exec",
+          "comm-strace/sched_process_exec",
+          "comm-strace/sched_process_exec"
+        ],
+        "T10-post-exec-privilege": [
+          "extend-default-policy/sched_process_exec",
+          "comm-strace/sched_process_exec",
+          "comm-strace/sched_process_exec"
+        ],
+        "T10-renamed-binary": [
+          "extend-default-policy/sched_process_exec",
+          "comm-strace/sched_process_exec",
+          "comm-strace/sched_process_exec"
+        ],
+        "T10-missing-parent": [
+          "extend-default-policy/sched_process_exec",
+          "comm-strace/sched_process_exec",
+          "comm-strace/sched_process_exec"
+        ],
+        "T10-allowlisted-image": [
+          "extend-default-policy/sched_process_exec",
+          "comm-strace/sched_process_exec",
+          "comm-strace/sched_process_exec"
+        ],
+        "T10-toctou-mismatch": [],
+        "T10-benign-lookalike": [
+          "extend-default-policy/sched_process_exec",
+          "comm-strace/sched_process_exec",
+          "comm-strace/sched_process_exec"
+        ],
+        "T11-baseline": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T11-stale-capability": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T11-post-exec-privilege": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T11-renamed-binary": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T11-missing-parent": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T11-allowlisted-image": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T11-toctou-mismatch": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T11-benign-lookalike": [
+          "signature-events/kernel_module_loading"
+        ],
+        "T12-baseline": [],
+        "T12-stale-capability": [],
+        "T12-post-exec-privilege": [],
+        "T12-renamed-binary": [],
+        "T12-missing-parent": [],
+        "T12-allowlisted-image": [],
+        "T12-toctou-mismatch": [],
+        "T12-benign-lookalike": [],
+        "T13-baseline": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T13-stale-capability": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T13-post-exec-privilege": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T13-renamed-binary": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T13-missing-parent": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T13-allowlisted-image": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T13-toctou-mismatch": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T13-benign-lookalike": [
+          "signature-events/ptrace_code_injection",
+          "signature-events/process_vm_write_inject"
+        ],
+        "T14-baseline": [
+          "signature-events/fileless_execution"
+        ],
+        "T14-stale-capability": [
+          "signature-events/fileless_execution"
+        ],
+        "T14-post-exec-privilege": [
+          "signature-events/fileless_execution"
+        ],
+        "T14-renamed-binary": [
+          "signature-events/fileless_execution"
+        ],
+        "T14-missing-parent": [
+          "signature-events/fileless_execution"
+        ],
+        "T14-allowlisted-image": [
+          "signature-events/fileless_execution"
+        ],
+        "T14-toctou-mismatch": [
+          "signature-events/fileless_execution"
+        ],
+        "T14-benign-lookalike": [
+          "signature-events/fileless_execution"
+        ],
+        "T15-baseline": [
+          "signature-events/disk_mount"
+        ],
+        "T15-stale-capability": [
+          "signature-events/disk_mount"
+        ],
+        "T15-post-exec-privilege": [
+          "signature-events/disk_mount"
+        ],
+        "T15-renamed-binary": [
+          "signature-events/disk_mount"
+        ],
+        "T15-missing-parent": [
+          "signature-events/disk_mount"
+        ],
+        "T15-allowlisted-image": [
+          "signature-events/disk_mount"
+        ],
+        "T15-toctou-mismatch": [
+          "signature-events/disk_mount"
+        ],
+        "T15-benign-lookalike": [
+          "signature-events/disk_mount"
+        ],
+        "T16-baseline": [
+          "new-containers/security_file_open",
+          "new-pids/security_file_open",
+          "new-containers/security_file_open"
+        ],
+        "T16-stale-capability": [
+          "new-containers/security_file_open",
+          "new-pids/security_file_open",
+          "new-containers/security_file_open"
+        ],
+        "T16-post-exec-privilege": [
+          "new-pids/security_file_open"
+        ],
+        "T16-renamed-binary": [
+          "new-containers/security_file_open",
+          "new-pids/security_file_open",
+          "new-containers/security_file_open"
+        ],
+        "T16-missing-parent": [
+          "new-pids/security_file_open"
+        ],
+        "T16-allowlisted-image": [
+          "new-containers/security_file_open",
+          "new-pids/security_file_open",
+          "new-containers/security_file_open"
+        ],
+        "T16-toctou-mismatch": [
+          "new-containers/security_file_open",
+          "new-pids/security_file_open",
+          "new-containers/security_file_open"
+        ],
+        "T16-benign-lookalike": [
+          "new-pids/security_file_open"
+        ],
+        "T17-baseline": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T17-stale-capability": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T17-post-exec-privilege": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T17-renamed-binary": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T17-missing-parent": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T17-allowlisted-image": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T17-toctou-mismatch": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T17-benign-lookalike": [
+          "signature-events/proc_kcore_read",
+          "signature-events/proc_mem_access"
+        ],
+        "T18-baseline": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T18-stale-capability": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T18-post-exec-privilege": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T18-renamed-binary": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T18-missing-parent": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T18-allowlisted-image": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T18-toctou-mismatch": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T18-benign-lookalike": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-baseline": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-stale-capability": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-post-exec-privilege": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-renamed-binary": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-missing-parent": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-allowlisted-image": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-toctou-mismatch": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T19-benign-lookalike": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-baseline": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-stale-capability": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-post-exec-privilege": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-renamed-binary": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-missing-parent": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-allowlisted-image": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-toctou-mismatch": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T20-benign-lookalike": [
+          "signature-events/cgroup_notify_on_release",
+          "signature-events/default_loader_mod"
+        ],
+        "T21-baseline": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T21-stale-capability": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T21-post-exec-privilege": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T21-renamed-binary": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T21-missing-parent": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T21-allowlisted-image": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T21-toctou-mismatch": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T21-benign-lookalike": [
+          "signature-events/k8s_api_connection",
+          "signature-events/docker_abuse"
+        ],
+        "T22-baseline": [],
+        "T22-stale-capability": [],
+        "T22-post-exec-privilege": [],
+        "T22-renamed-binary": [],
+        "T22-missing-parent": [],
+        "T22-allowlisted-image": [],
+        "T22-toctou-mismatch": [],
+        "T22-benign-lookalike": [],
+        "T23-baseline": [],
+        "T23-stale-capability": [],
+        "T23-post-exec-privilege": [],
+        "T23-renamed-binary": [],
+        "T23-missing-parent": [],
+        "T23-allowlisted-image": [],
+        "T23-toctou-mismatch": [],
+        "T23-benign-lookalike": [],
+        "T24-baseline": [],
+        "T24-stale-capability": [],
+        "T24-post-exec-privilege": [],
+        "T24-renamed-binary": [],
+        "T24-missing-parent": [],
+        "T24-allowlisted-image": [],
+        "T24-toctou-mismatch": [],
+        "T24-benign-lookalike": [],
+        "T25-baseline": [],
+        "T25-stale-capability": [],
+        "T25-post-exec-privilege": [],
+        "T25-renamed-binary": [],
+        "T25-missing-parent": [],
+        "T25-allowlisted-image": [],
+        "T25-toctou-mismatch": [],
+        "T25-benign-lookalike": []
+      }
+    }
+  }
+}

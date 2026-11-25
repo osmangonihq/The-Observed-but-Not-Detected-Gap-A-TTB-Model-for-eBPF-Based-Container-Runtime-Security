@@ -1,0 +1,548 @@
+[
+  {
+    "repo": "falcosecurity/rules",
+    "path": "rules/falco-incubating_rules.yaml",
+    "tool": "Falco",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/falco/extra/falco-incubating_rules.yaml"
+  },
+  {
+    "repo": "falcosecurity/rules",
+    "path": "rules/falco-sandbox_rules.yaml",
+    "tool": "Falco",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/falco/extra/falco-sandbox_rules.yaml"
+  },
+  {
+    "repo": "falcosecurity/rules",
+    "path": "rules/falco_rules.yaml",
+    "tool": "Falco",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/falco/extra/falco_rules.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/bpf.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/bpf.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/cves/cve-2023-2640-overlayfs-ubuntu.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/cves__cve-2023-2640-overlayfs-ubuntu.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/cves/cve-2024-3094-xz-ssh.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/cves__cve-2024-3094-xz-ssh.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/cves/cve-2026-65960.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/cves__cve-2026-65960.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/datagram-with-selectors.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/datagram-with-selectors.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/datagram-with-sock-tracking.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/datagram-with-sock-tracking.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/datagram.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/datagram.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/datagram_518.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/datagram_518.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/dev_hard_start_xmit.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/dev_hard_start_xmit.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/dev_queue_xmit.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/dev_queue_xmit.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/dns-only-specified-servers.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/dns-only-specified-servers.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/fd_install_cap_changes.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/fd_install_cap_changes.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/fd_install_caps.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/fd_install_caps.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/fd_install_ns.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/fd_install_ns.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/fd_install_ns_host.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/fd_install_ns_host.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/fentry.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/fentry.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/filename_monitoring.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/filename_monitoring.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/filename_monitoring_filtered.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/filename_monitoring_filtered.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/hardlink-observe.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/hardlink-observe.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/hardlink-override.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/hardlink-override.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/host-changes/monitor-kernel-modules.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/host-changes__monitor-kernel-modules.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/host-changes/monitor-signed-kernel-modules.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/host-changes__monitor-signed-kernel-modules.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/killer.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/killer.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/kprobe_commit_creds.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/kprobe_commit_creds.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/list-generated-ftrace.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/list-generated-ftrace.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/list-syscalls-generated.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/list-syscalls-generated.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/list-syscalls-tracepoint.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/list-syscalls-tracepoint.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/list-syscalls.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/list-syscalls.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/loader.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/loader.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/lsm_bprm_check.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/lsm_bprm_check.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/lsm_file_open.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/lsm_file_open.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/lsm_track_grandparent.yml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/lsm_track_grandparent.yml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/modules-nohost.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/modules-nohost.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/open_dnsrequest.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/open_dnsrequest.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/open_geturl.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/open_geturl.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/openat_write.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/openat_write.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/override-security.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/override-security.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/process-credentials/creds-capability-usage.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/process-credentials__creds-capability-usage.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/process-credentials/process-creds-changed.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/process-credentials__process-creds-changed.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/process-credentials/process-creds-installed.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/process-credentials__process-creds-installed.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/process-credentials/process.credentials.changes.at.syscalls.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/process-credentials__process.credentials.changes.at.syscalls.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/process-exec/process-exec-elf-begin.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/process-exec__process-exec-elf-begin.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/raw_syscalls.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/raw_syscalls.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/rawtp.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/rawtp.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/sandbox/linux-namespaces/kill_unprivileged_user_namespace.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/sandbox__linux-namespaces__kill_unprivileged_user_namespace.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/sandbox/linux-namespaces/kill_unprivileged_user_namespace_in_pid_namespace.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/sandbox__linux-namespaces__kill_unprivileged_user_namespace_in_pid_namespace.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/security-socket-connect-block-others.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/security-socket-connect-block-others.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/security-socket-connect.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/security-socket-connect.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/security_bprm_check.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/security_bprm_check.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/security_inode_follow_link.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/security_inode_follow_link.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/stack_traces.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/stack_traces.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/symlink-observe.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/symlink-observe.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/symlink-override.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/symlink-override.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/sys_clock_settime.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/sys_clock_settime.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/sys_mount.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/sys_mount.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/sys_pivot_root.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/sys_pivot_root.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/sys_ptrace.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/sys_ptrace.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/sys_setuid.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/sys_setuid.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tcp-accept.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tcp-accept.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tcp-connect-only-local-addrs.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tcp-connect-only-local-addrs.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tcp-connect-only-private-addrs.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tcp-connect-only-private-addrs.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tcp-connect-with-selectors.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tcp-connect-with-selectors.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tcp-connect.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tcp-connect.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tcp-listen.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tcp-listen.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tty.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tty.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/tty_54.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/tty_54.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/uprobe-binaries.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/uprobe-binaries.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/uprobe-host.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/uprobe-host.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/uprobe-pid.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/uprobe-pid.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/uprobe.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/uprobe.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/usdt-set.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/usdt-set.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/usdt.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/usdt.yaml"
+  },
+  {
+    "repo": "cilium/tetragon",
+    "path": "examples/tracingpolicy/write.yaml",
+    "tool": "Tetragon",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tetragon/extra/write.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/container_dns_events.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__container_dns_events.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/context_comm.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__context_comm.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/dig.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__dig.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/extend-default-policy.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__extend-default-policy.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/new_containers.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__new_containers.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/new_pids.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__new_pids.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/not_containers.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__not_containers.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/openat_data_pahtname.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__openat_data_pahtname.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/pid_equal.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__pid_equal.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/scope_comm.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__scope_comm.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/signature_events.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__signature_events.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/k8s/uid_higher_than_or_equal_to_zero.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__k8s__uid_higher_than_or_equal_to_zero.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/plain/dig.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__plain__dig.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/plain/new_containers.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__plain__new_containers.yaml"
+  },
+  {
+    "repo": "aquasecurity/tracee",
+    "path": "examples/policies/yaml/plain/scope_comm.yaml",
+    "tool": "Tracee",
+    "local": "/tmp/opencode/telemetry-trust-project/experiments/policies/tracee/extra/yaml__plain__scope_comm.yaml"
+  }
+]

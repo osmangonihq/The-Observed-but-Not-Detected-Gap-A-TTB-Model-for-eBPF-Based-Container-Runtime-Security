@@ -1,0 +1,105 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tetragon-policy
+  namespace: tetragon-system
+data:
+  escape.yaml: |
+    apiVersion: cilium.io/v1alpha1
+    kind: TracingPolicy
+    metadata:
+      name: escape-observe
+    spec:
+      kprobes:
+      - call: "__x64_sys_capset"
+        syscall: true
+        selectors:
+        - matchActions:
+          - action: Post
+      - call: "__x64_sys_setuid"
+        syscall: true
+        selectors:
+        - matchActions:
+          - action: Post
+      - call: "__x64_sys_mount"
+        syscall: true
+        selectors:
+        - matchActions:
+          - action: Post
+      - call: "__x64_sys_setns"
+        syscall: true
+        selectors:
+        - matchActions:
+          - action: Post
+      - call: "__x64_sys_open_by_handle_at"
+        syscall: true
+        selectors:
+        - matchActions:
+          - action: Post
+      - call: "__x64_sys_bpf"
+        syscall: true
+        selectors:
+        - matchActions:
+          - action: Post
+  lsm.yaml: |
+    apiVersion: cilium.io/v1alpha1
+    kind: TracingPolicy
+    metadata:
+      name: ttb-lsm-guard
+    spec:
+      lsmhooks:
+      - hook: "file_open"
+        args:
+        - index: 0
+          type: "file"
+        selectors:
+        - matchArgs:
+          - index: 0
+            operator: "Prefix"
+            values:
+            - "/proc/sys/kernel/core_pattern"
+            - "/proc/sys/kernel/modprobe"
+          matchActions:
+          - action: Post
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: tetragon
+  namespace: tetragon-system
+spec:
+  selector:
+    matchLabels:
+      app: tetragon
+  template:
+    metadata:
+      labels:
+        app: tetragon
+    spec:
+      serviceAccountName: tetragon
+      hostPID: true
+      containers:
+      - name: tetragon
+        image: quay.io/cilium/tetragon:v1.7.1
+        imagePullPolicy: IfNotPresent
+        args:
+        - --bpf-dir=ttb9
+        - --export-filename=/dev/stdout
+        - --tracing-policy-dir=/etc/tetragon/policies
+        - --enable-process-cred
+        - --enable-process-ns
+        - --export-file-perm=644
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - {name: bpf, mountPath: /sys/fs/bpf}
+        - {name: proc, mountPath: /proc}
+        - {name: sys, mountPath: /sys, readOnly: true}
+        - {name: policy, mountPath: /etc/tetragon/policies}
+        - {name: run, mountPath: /var/run}
+      volumes:
+      - {name: bpf, hostPath: {path: /sys/fs/bpf}}
+      - {name: proc, hostPath: {path: /proc}}
+      - {name: sys, hostPath: {path: /sys}}
+      - {name: policy, configMap: {name: tetragon-policy}}
+      - {name: run, hostPath: {path: /var/run}}

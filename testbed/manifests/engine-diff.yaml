@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ttb-engine-diff
+spec:
+  restartPolicy: Never
+  hostPID: true
+  containers:
+  - name: runner
+    image: quay.io/cilium/tetragon:v1.7.1
+    imagePullPolicy: IfNotPresent
+    securityContext: {privileged: true}
+    command: ["/bin/sh", "-c"]
+    args:
+    - |
+      echo "TTB_MARK S01_baseline_core"
+      echo '|/bin/true' > /proc/sys/kernel/core_pattern
+      sleep 5
+      echo "TTB_MARK S02_renamed_core"
+      cp /bin/sh /tmp/ttbrensh
+      /tmp/ttbrensh -c "echo '|/bin/true' > /proc/sys/kernel/core_pattern"
+      sleep 5
+      echo "TTB_MARK S03_baseline_modprobe"
+      echo '/tmp/x' > /proc/sys/kernel/modprobe
+      sleep 5
+      echo "TTB_MARK S04_renamed_modprobe"
+      /tmp/ttbrensh -c "echo '/tmp/x' > /proc/sys/kernel/modprobe"
+      sleep 5
+      echo "TTB_MARK S05_baseline_setns"
+      /usr/bin/nsenter -t 1 -m -- true
+      sleep 5
+      echo "TTB_MARK S06_renamed_setns"
+      cp /usr/bin/nsenter /tmp/ttbrenns
+      /tmp/ttbrenns -t 1 -m -- true
+      sleep 5
+      echo "TTB_MARK S07_baseline_bpf"
+      /usr/bin/bpftool prog list >/dev/null 2>&1
+      sleep 5
+      echo "TTB_MARK S08_renamed_bpf"
+      cp /usr/bin/bpftool /tmp/ttbrenbpf
+      /tmp/ttbrenbpf prog list >/dev/null 2>&1
+      sleep 5
+      echo "TTB_MARK S09_baseline_environ"
+      /bin/cat /proc/1/environ 2>/dev/null | /usr/bin/head -c 50 >/dev/null
+      sleep 5
+      echo "TTB_MARK S10_renamed_environ"
+      cp /bin/cat /tmp/ttbrencat
+      /tmp/ttbrencat /proc/1/environ 2>/dev/null | head -c 50 >/dev/null
+      sleep 5
+      echo "TTB_MARK S11_baseline_mem"
+      /bin/dd if=/dev/mem bs=1 count=1 2>/dev/null
+      sleep 5
+      echo "TTB_MARK S12_renamed_mem"
+      cp /bin/dd /tmp/ttbrendd
+      /tmp/ttbrendd if=/dev/mem bs=1 count=1 2>/dev/null
+      sleep 5
+      echo "TTB_ENGINE_DIFF_DONE"

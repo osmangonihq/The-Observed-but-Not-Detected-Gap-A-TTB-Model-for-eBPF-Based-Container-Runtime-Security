@@ -1,0 +1,33 @@
+{
+  "schema": "ttb-engine-differential/1.0",
+  "status": "executed",
+  "design": "Six executable primitives run twice in a privileged pod: baseline (stock utility path) and renamed-binary condition (utility copied to /tmp with a new name). Unique timestamped markers delimit 5 s windows. Actual Falco 0.45.2, Tetragon v1.7.1 and Tracee agents consumed the workloads.",
+  "conditions": {
+    "baseline": ["S01 core_pattern write", "S03 modprobe_path write", "S05 setns", "S07 bpf", "S09 /proc/1/environ read", "S11 /dev/mem read"],
+    "renamed-binary": ["S02 core_pattern write", "S04 modprobe_path write", "S06 setns", "S08 bpf", "S10 /proc/1/environ read", "S12 /dev/mem read"]
+  },
+  "results": {
+    "Falco": {
+      "version": "0.45.2",
+      "baseline_alerts": 0,
+      "baseline_total": 6,
+      "renamed_alerts": 6,
+      "renamed_total": 6,
+      "alert_rule": "Executing binary not part of base image",
+      "escape_specific": false,
+      "note": "Renamed binaries are new files in the container upper layer, so a generic image-integrity rule fires. This is the opposite direction to the abstract interpreter, which treated TB-04 as a fragility (predicted rate drop from 92% to 80%)."
+    },
+    "Tetragon": {
+      "version": "v1.7.1",
+      "scenario_attributable_policy_events": 0,
+      "note": "Policies were loaded; process_exec/exit events for the scenario binaries were captured, but no path-specific kprobe/LSM event was attributable in this run. Not evidence that the tool cannot alert, only that this configuration did not."
+    },
+    "Tracee": {
+      "version": "image digest c83ce5aa",
+      "scenario_attributable_events": 0,
+      "note": "No configured event (security_file_open, cgroup_release_agent, core_pattern_modification) was attributable to the scenarios in this run."
+    }
+  },
+  "interpretation": "Engine-level calibration does not support the sign of the model's TB-04 prediction for Falco. Static anchor analysis identifies a dependency on binary identity, but the real engine's reaction to that dependency is to alert more, not less. The paper must not claim that renaming evades Falco; it can claim that the effect of renaming is engine- and rule-dependent, which motivates engine-level evaluation of static audit findings.",
+  "artifacts": ["engine-markers.log", "engine-falco.log", "engine-tracee.log", "engine-tetragon.jsonl", "testbed/manifests/engine-diff.yaml"]
+}

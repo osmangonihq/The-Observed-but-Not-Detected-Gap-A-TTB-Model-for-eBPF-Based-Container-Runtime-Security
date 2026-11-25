@@ -1,0 +1,171 @@
+{
+  "schema": "ttb-ablation/1.0",
+  "thresholds": [
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.5
+  ],
+  "tools": {
+    "Falco": {
+      "0.1": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      },
+      "0.15": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      },
+      "0.2": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      },
+      "0.25": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      },
+      "0.3": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      },
+      "0.35": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      },
+      "0.4": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      },
+      "0.5": {
+        "detected": 10,
+        "gaps": 13,
+        "gap_ratio": 0.5652
+      }
+    },
+    "Tetragon": {
+      "0.1": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      },
+      "0.15": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      },
+      "0.2": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      },
+      "0.25": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      },
+      "0.3": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      },
+      "0.35": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      },
+      "0.4": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      },
+      "0.5": {
+        "detected": 10,
+        "gaps": 3,
+        "gap_ratio": 0.2308
+      }
+    },
+    "Tracee": {
+      "0.1": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      },
+      "0.15": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      },
+      "0.2": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      },
+      "0.25": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      },
+      "0.3": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      },
+      "0.35": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      },
+      "0.4": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      },
+      "0.5": {
+        "detected": 18,
+        "gaps": 1,
+        "gap_ratio": 0.0526
+      }
+    }
+  },
+  "without_TB-01": {
+    "Falco": 0.4783,
+    "Tetragon": 0.2308,
+    "Tracee": 0.0526
+  },
+  "without_TB-02": {
+    "Falco": 0.5652,
+    "Tetragon": 0.0769,
+    "Tracee": 0.0526
+  },
+  "without_TB-03": {
+    "Falco": 0.5217,
+    "Tetragon": 0.2308,
+    "Tracee": 0.0526
+  },
+  "without_TB-04": {
+    "Falco": 0.4783,
+    "Tetragon": 0.2308,
+    "Tracee": 0.0526
+  },
+  "without_TB-05": {
+    "Falco": 0.4783,
+    "Tetragon": 0.2308,
+    "Tracee": 0.0
+  },
+  "without_TB-06": {
+    "Falco": 0.5652,
+    "Tetragon": 0.2308,
+    "Tracee": 0.0526
+  }
+}

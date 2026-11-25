@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ttb-attacker
+  namespace: default
+spec:
+  hostPID: true
+  restartPolicy: Never
+  containers:
+  - name: attacker
+    image: quay.io/cilium/tetragon:v1.7.1
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh", "-c"]
+    args:
+    - |
+      echo "===== TTB PRIMITIVE RUN ====="
+      echo "KERNEL=$(uname -r)"
+      echo "CAPEFF=$(grep CapEff /proc/self/status)"
+      echo "--- P1 core_pattern ---"
+      ORIG=$(cat /proc/sys/kernel/core_pattern)
+      if echo '|/bin/true' > /proc/sys/kernel/core_pattern 2>/tmp/err1; then echo "P1=SUCCESS"; else echo "P1=FAIL $(cat /tmp/err1)"; fi
+      echo "$ORIG" > /proc/sys/kernel/core_pattern 2>/dev/null || true
+      echo "--- P2 modprobe_path ---"
+      ORIG2=$(cat /proc/sys/kernel/modprobe)
+      if echo '/tmp/payload' > /proc/sys/kernel/modprobe 2>/tmp/err2; then echo "P2=SUCCESS"; else echo "P2=FAIL $(cat /tmp/err2)"; fi
+      echo "$ORIG2" > /proc/sys/kernel/modprobe 2>/dev/null || true
+      echo "--- P3 bind-mount host root ---"
+      mkdir -p /mnt/hostroot
+      if mount --bind /proc/1/root /mnt/hostroot 2>/tmp/err3; then echo "P3=SUCCESS $(head -c 40 /mnt/hostroot/etc/hostname)"; umount /mnt/hostroot; else echo "P3=FAIL $(cat /tmp/err3)"; fi
+      echo "--- P4 setns into host mount ns ---"
+      if nsenter -t 1 -m -- true 2>/tmp/err4; then echo "P4=SUCCESS"; else echo "P4=FAIL $(cat /tmp/err4)"; fi
+      echo "--- P5 capset ---"
+      if setpriv --bounding-set=-sys_admin /bin/true 2>/tmp/err5; then echo "P5=SUCCESS"; else echo "P5=FAIL $(cat /tmp/err5)"; fi
+      echo "--- P6 bpf ---"
+      if bpftool prog list >/tmp/bpfout 2>/tmp/err6; then echo "P6=SUCCESS $(wc -l < /tmp/bpfout) programs"; else echo "P6=FAIL $(cat /tmp/err6)"; fi
+      echo "===== RUN COMPLETE ====="
+      sleep 20
+    securityContext:
+      privileged: true

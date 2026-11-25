@@ -1,0 +1,155 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tetragon-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tetragon
+  namespace: tetragon-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tetragon-testbed
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: tetragon
+  namespace: tetragon-system
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tetragon-policy
+  namespace: tetragon-system
+data:
+  escape.yaml: |
+    apiVersion: cilium.io/v1alpha1
+    kind: TracingPolicy
+    metadata:
+      name: escape-observe
+    spec:
+      kprobes:
+      - call: "security_file_permission"
+        syscall: false
+        args:
+        - index: 0
+          type: "file"
+      - call: "__x64_sys_openat"
+        syscall: true
+        args:
+        - index: 0
+          type: "int"
+        - index: 1
+          type: "string"
+        selectors:
+        - matchArgs:
+          - index: 1
+            operator: "Prefix"
+            values:
+            - "/proc/sys/kernel/core_pattern"
+            - "/proc/sys/kernel/modprobe"
+          matchActions:
+          - action: Post
+            rateLimit: 1
+      - call: "__x64_sys_capset"
+        syscall: true
+        args:
+        - index: 0
+          type: "cap_user_header_t"
+        selectors:
+        - matchActions:
+          - action: Post
+            rateLimit: 1
+      - call: "__x64_sys_setuid"
+        syscall: true
+        args:
+        - index: 0
+          type: "int"
+        selectors:
+        - matchActions:
+          - action: Post
+            rateLimit: 1
+      - call: "__x64_sys_mount"
+        syscall: true
+        args:
+        - index: 0
+          type: "string"
+        - index: 1
+          type: "string"
+        selectors:
+        - matchActions:
+          - action: Post
+            rateLimit: 1
+      - call: "__x64_sys_setns"
+        syscall: true
+        args:
+        - index: 0
+          type: "int"
+        selectors:
+        - matchActions:
+          - action: Post
+            rateLimit: 1
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: tetragon
+  namespace: tetragon-system
+spec:
+  selector:
+    matchLabels:
+      app: tetragon
+  template:
+    metadata:
+      labels:
+        app: tetragon
+    spec:
+      serviceAccountName: tetragon
+      hostPID: true
+      hostNetwork: true
+      containers:
+      - name: tetragon
+        image: quay.io/cilium/tetragon:v1.7.1
+        imagePullPolicy: Never
+        args:
+        - --tracing-policy-dir=/etc/tetragon/tetragon.tp.d
+        - --enable-process-cred
+        - --enable-process-ns
+        - --enable-k8s-api
+        - --export-file-perm=644
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: bpf
+          mountPath: /sys/fs/bpf
+        - name: proc
+          mountPath: /proc
+        - name: sysfs
+          mountPath: /sys
+          readOnly: true
+        - name: policy
+          mountPath: /etc/tetragon/tetragon.tp.d
+        - name: runtime
+          mountPath: /var/run
+      volumes:
+      - name: bpf
+        hostPath:
+          path: /sys/fs/bpf
+      - name: proc
+        hostPath:
+          path: /proc
+      - name: sysfs
+        hostPath:
+          path: /sys
+      - name: policy
+        configMap:
+          name: tetragon-policy
+      - name: runtime
+        hostPath:
+          path: /var/run

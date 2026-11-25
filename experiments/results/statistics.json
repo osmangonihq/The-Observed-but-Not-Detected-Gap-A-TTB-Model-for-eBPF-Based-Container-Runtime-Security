@@ -1,0 +1,293 @@
+{
+  "schema": "ttb-statistics/1.0",
+  "ci_method": "Wilson score, 95%",
+  "static": {
+    "Falco": {
+      "robustly_covered": 10,
+      "gap": 13,
+      "no_rule": 2,
+      "covered_denominator": 23,
+      "gap_fraction": 0.5652173913043478,
+      "gap_ci95": [
+        0.3681,
+        0.7437
+      ]
+    },
+    "Tetragon": {
+      "robustly_covered": 10,
+      "gap": 3,
+      "no_rule": 12,
+      "covered_denominator": 13,
+      "gap_fraction": 0.23076923076923078,
+      "gap_ci95": [
+        0.0818,
+        0.5026
+      ]
+    },
+    "Tracee": {
+      "robustly_covered": 18,
+      "gap": 1,
+      "no_rule": 6,
+      "covered_denominator": 19,
+      "gap_fraction": 0.05263157894736842,
+      "gap_ci95": [
+        0.0094,
+        0.2464
+      ]
+    }
+  },
+  "differential": {
+    "Falco": {
+      "by_variant": {
+        "baseline": {
+          "fired": 23,
+          "n": 25,
+          "rate": 0.92,
+          "ci95": [
+            0.7503,
+            0.9778
+          ]
+        },
+        "stale-capability": {
+          "fired": 22,
+          "n": 25,
+          "rate": 0.88,
+          "ci95": [
+            0.7004,
+            0.9583
+          ]
+        },
+        "post-exec-privilege": {
+          "fired": 22,
+          "n": 25,
+          "rate": 0.88,
+          "ci95": [
+            0.7004,
+            0.9583
+          ]
+        },
+        "renamed-binary": {
+          "fired": 20,
+          "n": 25,
+          "rate": 0.8,
+          "ci95": [
+            0.6087,
+            0.9114
+          ]
+        },
+        "missing-parent": {
+          "fired": 19,
+          "n": 25,
+          "rate": 0.76,
+          "ci95": [
+            0.5657,
+            0.885
+          ]
+        },
+        "allowlisted-image": {
+          "fired": 14,
+          "n": 25,
+          "rate": 0.56,
+          "ci95": [
+            0.3707,
+            0.7333
+          ]
+        },
+        "toctou-mismatch": {
+          "fired": 9,
+          "n": 25,
+          "rate": 0.36,
+          "ci95": [
+            0.2025,
+            0.5548
+          ]
+        },
+        "benign-lookalike": {
+          "fired": 11,
+          "n": 25,
+          "rate": 0.44,
+          "ci95": [
+            0.2667,
+            0.6293
+          ]
+        }
+      },
+      "precision_ci95": [
+        0.8648,
+        0.9556
+      ],
+      "recall_ci95": [
+        0.6673,
+        0.7968
+      ]
+    },
+    "Tetragon": {
+      "by_variant": {
+        "baseline": {
+          "fired": 11,
+          "n": 25,
+          "rate": 0.44,
+          "ci95": [
+            0.2667,
+            0.6293
+          ]
+        },
+        "stale-capability": {
+          "fired": 11,
+          "n": 25,
+          "rate": 0.44,
+          "ci95": [
+            0.2667,
+            0.6293
+          ]
+        },
+        "post-exec-privilege": {
+          "fired": 11,
+          "n": 25,
+          "rate": 0.44,
+          "ci95": [
+            0.2667,
+            0.6293
+          ]
+        },
+        "renamed-binary": {
+          "fired": 11,
+          "n": 25,
+          "rate": 0.44,
+          "ci95": [
+            0.2667,
+            0.6293
+          ]
+        },
+        "missing-parent": {
+          "fired": 11,
+          "n": 25,
+          "rate": 0.44,
+          "ci95": [
+            0.2667,
+            0.6293
+          ]
+        },
+        "allowlisted-image": {
+          "fired": 7,
+          "n": 25,
+          "rate": 0.28,
+          "ci95": [
+            0.1428,
+            0.4758
+          ]
+        },
+        "toctou-mismatch": {
+          "fired": 2,
+          "n": 25,
+          "rate": 0.08,
+          "ci95": [
+            0.0222,
+            0.2497
+          ]
+        },
+        "benign-lookalike": {
+          "fired": 7,
+          "n": 25,
+          "rate": 0.28,
+          "ci95": [
+            0.1428,
+            0.4758
+          ]
+        }
+      },
+      "precision_ci95": [
+        0.8102,
+        0.9514
+      ],
+      "recall_ci95": [
+        0.298,
+        0.4392
+      ]
+    },
+    "Tracee": {
+      "by_variant": {
+        "baseline": {
+          "fired": 17,
+          "n": 25,
+          "rate": 0.68,
+          "ci95": [
+            0.4841,
+            0.8279
+          ]
+        },
+        "stale-capability": {
+          "fired": 17,
+          "n": 25,
+          "rate": 0.68,
+          "ci95": [
+            0.4841,
+            0.8279
+          ]
+        },
+        "post-exec-privilege": {
+          "fired": 17,
+          "n": 25,
+          "rate": 0.68,
+          "ci95": [
+            0.4841,
+            0.8279
+          ]
+        },
+        "renamed-binary": {
+          "fired": 17,
+          "n": 25,
+          "rate": 0.68,
+          "ci95": [
+            0.4841,
+            0.8279
+          ]
+        },
+        "missing-parent": {
+          "fired": 17,
+          "n": 25,
+          "rate": 0.68,
+          "ci95": [
+            0.4841,
+            0.8279
+          ]
+        },
+        "allowlisted-image": {
+          "fired": 17,
+          "n": 25,
+          "rate": 0.68,
+          "ci95": [
+            0.4841,
+            0.8279
+          ]
+        },
+        "toctou-mismatch": {
+          "fired": 15,
+          "n": 25,
+          "rate": 0.6,
+          "ci95": [
+            0.4074,
+            0.766
+          ]
+        },
+        "benign-lookalike": {
+          "fired": 17,
+          "n": 25,
+          "rate": 0.68,
+          "ci95": [
+            0.4841,
+            0.8279
+          ]
+        }
+      },
+      "precision_ci95": [
+        0.8062,
+        0.9193
+      ],
+      "recall_ci95": [
+        0.5959,
+        0.734
+      ]
+    }
+  }
+}
