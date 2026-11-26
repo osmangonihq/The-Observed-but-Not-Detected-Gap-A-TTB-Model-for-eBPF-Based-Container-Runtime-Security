@@ -20,28 +20,37 @@ verdicts = data["tools"]["Falco"]["techniques"]
 tech_ids=[v["id"] for v in verdicts]; tech_names=[v["name"] for v in verdicts]
 
 def fig1():
-    fig, ax = plt.subplots(figsize=(13.5, 6.4))
-    ax.set_xlim(0,13.5); ax.set_ylim(0,6.4); ax.axis('off')
-    def box(x,y,w,h,text,fc,fs=9.5):
+    fig=plt.figure(figsize=(13.5,9.2))
+    gs=fig.add_gridspec(2,1,height_ratios=[1,0.92],hspace=0.32)
+    def box(ax,x,y,w,h,text,fc,fs=9.3):
         ax.add_patch(patches.FancyBboxPatch((x,y),w,h,boxstyle="round,pad=0.02,rounding_size=0.08",linewidth=1.4,edgecolor="#22303f",facecolor=fc,zorder=2))
-        ax.text(x+w/2,y+h/2,text,ha='center',va='center',fontsize=fs,color="#14202c",linespacing=1.35,zorder=3)
-    def arrow(x1,y1,x2,y2,color="#22303f",lw=1.6):
+        ax.text(x+w/2,y+h/2,text,ha="center",va="center",fontsize=fs,color="#14202c",linespacing=1.3,zorder=3)
+    def arrow(ax,x1,y1,x2,y2,color="#22303f",lw=1.6):
         ax.add_patch(patches.FancyArrowPatch((x1,y1),(x2,y2),arrowstyle="-|>",mutation_scale=13,linewidth=lw,color=color,shrinkA=2,shrinkB=2,zorder=1))
-    y=4.25
-    box(0.25,y,2.75,1.35,"KERNEL EVENT\nescape syscall / LSM hook\n(e.g. write to release_agent)","#dbeafe")
-    box(3.55,y,2.75,1.35,"OBSERVATION  O(e)\neBPF kprobe / tracepoint / LSM\n'complete visibility'","#dcfce7")
-    box(6.85,y,2.75,1.35,"POLICY DECISION  P(e)\ncondition over event fields\n+ metadata + telemetry state","#fef9c3")
-    box(10.35,4.85,2.5,0.8,"ALERT   D(e)=1","#bbf7d0",fs=10.5)
-    box(10.35,3.75,2.5,0.8,"NO ALERT   D(e)=0","#fecaca",fs=10.5)
-    arrow(3.0,y+0.68,3.55,y+0.68); arrow(6.3,y+0.68,6.85,y+0.68)
-    arrow(9.6,y+0.9,10.35,5.25); arrow(9.6,y+0.42,10.35,4.15,color="#b91c1c")
-    box(0.25,1.9,2.75,1.15,"ATTACKER\nprivileged in-container\nworkload","#fee2e2")
-    arrow(1.62,3.05,1.62,y)
-    box(6.45,1.45,3.85,1.65,"TRUST ANCHORS (delegated inputs)\nTB-01 privilege flags    TB-02 allowlists\nTB-03 telemetry gaps   TB-04 binary names\nTB-05 no LSM cross-check   TB-06 snapshots","#ffe4e6",fs=9)
-    arrow(8.37,3.1,8.37,y)
-    ax.text(6.55,0.55,"OBSERVED-BUT-NOT-DETECTED GAP:  O(e)=1 but P(e)=0 because P trusts an anchor the attacker can invalidate",ha='center',fontsize=9.4,fontweight='bold',color="#991b1b")
-    fig.tight_layout(); fig.savefig(OUT/'fig1_dtb_model.png',dpi=300,bbox_inches='tight'); plt.close(fig)
-
+    ax=fig.add_subplot(gs[0]); ax.set_xlim(0,13.5); ax.set_ylim(0,6.5); ax.axis("off")
+    ax.text(0.1,6.2,"(a) Detection-Trust Boundary",fontsize=11,fontweight="bold",color="#1f4e79")
+    y=4.15
+    box(ax,0.25,y,2.75,1.35,"KERNEL EVENT\nescape syscall / LSM hook\n(e.g. write to release_agent)","#dbeafe")
+    box(ax,3.55,y,2.75,1.35,"OBSERVATION  O(e)\neBPF kprobe / tracepoint / LSM","#dcfce7")
+    box(ax,6.85,y,2.75,1.35,"POLICY DECISION  P(e)\ncondition over event fields\n+ metadata + telemetry state","#fef9c3")
+    box(ax,10.35,4.75,2.5,0.8,"ALERT   D(e)=1","#bbf7d0",fs=10)
+    box(ax,10.35,3.65,2.5,0.8,"NO ALERT   D(e)=0","#fecaca",fs=10)
+    arrow(ax,3.0,y+.68,3.55,y+.68); arrow(ax,6.3,y+.68,6.85,y+.68)
+    arrow(ax,9.6,y+.9,10.35,5.15); arrow(ax,9.6,y+.42,10.35,4.05,color="#b91c1c")
+    box(ax,0.25,1.85,2.75,1.1,"ATTACKER\nprivileged in-container workload","#fee2e2")
+    arrow(ax,1.62,2.95,1.62,y)
+    box(ax,6.45,1.4,3.85,1.6,"TRUST ANCHORS (delegated inputs)\nTB-01 privilege   TB-02 allowlists\nTB-03 telemetry   TB-04 names\nTB-05 cross-layer   TB-06 snapshots","#ffe4e6",fs=8.8)
+    arrow(ax,8.37,3.0,8.37,y)
+    ax.text(6.6,0.5,"GAP: O(e)=1 but P(e)=0 because P trusts an anchor the attacker can invalidate",ha="center",fontsize=9,fontweight="bold",color="#991b1b")
+    ax=fig.add_subplot(gs[1]); ax.set_xlim(0,13.5); ax.set_ylim(0,5.6); ax.axis("off")
+    ax.text(0.1,5.3,"(b) DTB-Audit pipeline",fontsize=11,fontweight="bold",color="#1f4e79")
+    stages=[(0.2,"INPUT\nFalco / Tetragon\n/ Tracee policies","#dbeafe"),(2.9,"PARSE\nYAML + macro\nexpansion","#dcfce7"),(5.6,"NORMALISE\ncommon observable\nvocabulary","#fef9c3"),(8.3,"CHECK\n6 trust-anchor\nchecks","#ffe4e6"),(11.0,"SCORE\nTDS -> verdict\n+ reports","#e0e7ff")]
+    for x,t,c in stages: box(ax,x,2.4,2.2,1.6,t,c,fs=8.8)
+    for i in range(4): arrow(ax,stages[i][0]+2.2,3.2,stages[i+1][0],3.2)
+    box(ax,4.4,0.35,4.8,1.0,"25-technique corpus -> coverage matrix, gap ratio, Wilson 95% CIs","#f3f4f6",fs=8.8)
+    arrow(ax,10.1,2.4,8.0,1.35,color="#6b7280",lw=1.3)
+    ax.text(6.7,4.65,"Every finding cites a literal policy fragment; all rates are reproducible from checked-in inputs.",ha="center",fontsize=8.6,color="#4b5563")
+    fig.savefig(OUT/"fig1_dtb_model.png",dpi=300,bbox_inches="tight"); plt.close(fig)
 def fig2():
     lm={"detected":2,"observed-not-detected":1,"no-rule":0}
     colors=["#e5e7eb","#f59e0b","#16a34a"]; cmap=ListedColormap(colors)
@@ -98,14 +107,31 @@ def fig5():
     fig.colorbar(im,ax=ax,label="absolute recall drop",shrink=.85)
     fig.tight_layout(); fig.savefig(OUT/'fig5_anchor_drop.png',dpi=300,bbox_inches='tight'); plt.close(fig)
 
-def fig7_ablation():
+
+def fig7_leadtime():
+    import numpy as np
+    import json
+    L = json.loads((R / 'lead_time.json').read_text())
+    names = ['S02 core','S04 modprobe','S06 setns','S08 bpf','S10 environ','S12 mem']
+    vals = [L['lead_ms'][k] for k in ['S02_renamed_core','S04_renamed_modprobe','S06_renamed_setns','S08_renamed_bpf','S10_renamed_environ','S12_renamed_mem']]
+    fig, ax = plt.subplots(figsize=(10,4.2))
+    bars = ax.bar(names, vals, color='#f59e0b', edgecolor='#22303f', linewidth=0.8)
+    for b,v in zip(bars, vals):
+        ax.text(b.get_x()+b.get_width()/2, v+0.6, f'{v:.1f}', ha='center', va='bottom', fontsize=9)
+    ax.axhline(np.median(vals), color='#b91c1c', linestyle='--', linewidth=1.2, label=f'median {np.median(vals):.1f} ms')
+    ax.set_ylabel('Alarm lead time (ms)', fontsize=10); ax.set_ylim(0, max(vals)*1.25)
+    ax.legend(fontsize=9); ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
+    ax.grid(axis='y', alpha=0.25); fig.tight_layout()
+    fig.savefig(OUT/'fig7_leadtime.png', dpi=300, bbox_inches='tight'); plt.close(fig)
+
+def fig8_ablation():
     th=ABL["thresholds"]; fig,ax=plt.subplots(figsize=(8.5,4.5))
     for t,color in zip(tools,["#1f77b4","#ff7f0e","#2ca02c"]):
         vals=[ABL["tools"][t][str(x)]["gap_ratio"] for x in th]
         ax.plot(th,vals,marker='o',label=t,color=color,linewidth=2)
     ax.set_xlabel("TDS robustness threshold",fontsize=10); ax.set_ylabel("Gap ratio",fontsize=10); ax.set_ylim(0,1)
     ax.legend(fontsize=10); ax.grid(alpha=.3); fig.tight_layout()
-    fig.savefig(OUT/'fig7_ablation.png',dpi=300,bbox_inches='tight'); plt.close(fig)
+    fig.savefig(OUT/'fig8_ablation.png',dpi=300,bbox_inches='tight'); plt.close(fig)
 
 def fig6_snapshot():
     fig,ax=plt.subplots(figsize=(13,5.4)); ax.set_xlim(0,13); ax.set_ylim(0,5.4); ax.axis('off')
@@ -125,5 +151,5 @@ def fig6_snapshot():
     fig.tight_layout(); fig.savefig(OUT/'fig6_snapshot.png',dpi=300,bbox_inches='tight'); plt.close(fig)
 
 if __name__=='__main__':
-    fig1(); fig2(); fig3(); fig4(); fig5(); fig6_snapshot(); fig7_ablation()
+    fig1(); fig2(); fig3(); fig4(); fig5(); fig6_snapshot(); fig7_leadtime(); fig8_ablation()
     for p in sorted(OUT.glob('*.png')): print(p.name, p.stat().st_size)

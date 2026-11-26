@@ -1,0 +1,30 @@
+{
+  "relative_s": {
+    "S01_baseline_core": 0.0,
+    "S02_renamed_core": 5.004,
+    "S03_baseline_modprobe": 10.017,
+    "S04_renamed_modprobe": 15.021,
+    "S05_baseline_setns": 20.025,
+    "S06_renamed_setns": 25.03,
+    "S07_baseline_bpf": 30.037,
+    "S08_renamed_bpf": 35.401,
+    "S09_baseline_environ": 40.748,
+    "S10_renamed_environ": 45.754,
+    "S11_baseline_mem": 50.761,
+    "S12_renamed_mem": 55.765
+  },
+  "lead_ms": {
+    "S01_baseline_core": null,
+    "S02_renamed_core": 27.4,
+    "S03_baseline_modprobe": null,
+    "S04_renamed_modprobe": 1.3,
+    "S05_baseline_setns": null,
+    "S06_renamed_setns": 10.8,
+    "S07_baseline_bpf": null,
+    "S08_renamed_bpf": 25.7,
+    "S09_baseline_environ": null,
+    "S10_renamed_environ": 11.3,
+    "S11_baseline_mem": null,
+    "S12_renamed_mem": 5.4
+  }
+}
