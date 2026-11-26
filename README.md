@@ -26,7 +26,8 @@
 2. **Differential experiment:** 175 malicious events; alert rates fall under trust-anchor mutation.
 3. **Live testbed (three agents):** KVM VM, kernel 6.14, kind/K8s; Tetragon v1.7.1, Falco 0.45.2, Tracee (pinned digest). Stock configurations gave no escape-specific alert for the two host-config writes (coverage gaps, §6.2). The setuid helper (P7) produced an alert carrying uid 1000 while the process was uid 0 at write time — the genuine O=1∧P=0 trust finding of §6.4. An LSM guard restored path-specific detection.
 4. **False positives:** short benign smoke test, 2,032 events → 14 kprobe alerts, 0 LSM-guard alerts (95% upper bound 0.15%). Not a precision estimate.
-5. **Formal + practical:** Proposition 1 (asymmetry of trust-bearing decisions), explicit soundness/completeness bounds, six-row practitioner checklist (Table 15).
+5. **Signed model + mechanism:** predicate polarity, Proposition 2 (expressiveness limit), and DTB-Harden, whose event-time guards restored both host-config writes (0/2 -> 2/2).
+6. **Formal + practical:** Proposition 1 (asymmetry of trust-bearing decisions), explicit soundness/completeness bounds, six-row practitioner checklist (Table 15).
 6. **Epistemics:** adversary model, τ→mutation→effect table, anchor-blind selection, commit SHAs, access dates, per-cell evidence.
 
 ## Honest limits

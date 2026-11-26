@@ -1,0 +1,21 @@
+apiVersion: cilium.io/v1alpha1
+kind: TracingPolicy
+metadata:
+  name: dtb-hardened-lsm
+spec:
+  lsmhooks:
+  - hook: "file_open"
+    args:
+    - index: 0
+      type: "file"
+    selectors:
+    - matchArgs:
+      - index: 0
+        operator: "Prefix"
+        values:
+        - "/proc/sys/kernel/core_pattern"
+        - "/proc/sys/kernel/modprobe"
+        - "/proc/1/root"
+        - "/var/run/docker.sock"
+      matchActions:
+      - action: Post

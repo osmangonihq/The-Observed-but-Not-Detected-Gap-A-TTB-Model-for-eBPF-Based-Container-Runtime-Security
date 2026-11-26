@@ -1,0 +1,29 @@
+{
+  "schema": "ttb-polarity/1.0",
+  "tools": {
+    "Falco": {
+      "TB-04_findings_by_polarity": {
+        "alert-decreasing": 32
+      },
+      "total_TB04": 32
+    },
+    "Tetragon": {
+      "TB-04_findings_by_polarity": {
+        "alert-decreasing": 10
+      },
+      "total_TB04": 10
+    },
+    "Tracee": {
+      "TB-04_findings_by_polarity": {
+        "alert-decreasing": 5,
+        "direction-undetermined": 4
+      },
+      "total_TB04": 9
+    }
+  },
+  "calibration": {
+    "abstract_interpreter_TB04_prediction": "alert-decreasing under rename",
+    "live_falco_observation": "6/6 alerts under rename (alert-increasing)",
+    "resolution": "rule uses negative novelty predicate proc.is_exe_upper_layer=true; TB-04 must be signed"
+  }
+}

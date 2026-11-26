@@ -1,0 +1,19 @@
+{
+  "schema": "ttb-hardening/1.0",
+  "mechanism": "DTB-Harden: transforms a static trust-anchor finding into event-time kernel guards. Emits two Tetragon TracingPolicies: an LSM file_open guard on sensitive host-config paths, and kprobes on capset/setuid/setns for event-time credential revalidation. Implemented in auditor/ttb_auditor/harden.py.",
+  "polarity_model": {
+    "definition": "An anchor tau has polarity sigma in {alert-increasing, alert-decreasing} according to whether a workload-side mutation of tau's input raises or lowers P(e). TB-04 conflates a positive name predicate (decreasing) with a negative novelty predicate such as proc.is_exe_upper_layer=true (increasing).",
+    "static_finding_counts": "See polarity.json; the auditor recorded 32/10/9 TB-04 findings as positive-name and none as negative-novelty for Falco/Tetragon/Tracee, while live Falco alerted 6/6 under rename via the negative novelty predicate.",
+    "conclusion": "Static anchor extraction missed the rule that actually fired; the auditor is sound for quoted fragments but incomplete for predicate polarity."
+  },
+  "validation": {
+    "design": "Same 12-scenario engine differential as engine_differential.json, with Tetragon running the two DTB-Harden policies instead of the stock example policies.",
+    "host_config_writes_detected_baseline": "0/2 (P1 core_pattern, P2 modprobe_path)",
+    "host_config_writes_detected_hardened": "2/2 (LSM file_open alerts naming both paths)",
+    "overall_attributable_events": 3,
+    "bound": "Two writes, one kernel, one configuration; not a detection-rate estimate."
+  },
+  "formal_expressiveness": {
+    "proposition": "A rule whose alert predicate depends only on launch-time identity metadata cannot distinguish an event whose identity changed after exec; no policy-level rewrite of that predicate suffices. Adding an event-time hook (LSM or kprobe) changes the observability set O and is necessary. This separates anchors fixable by policy rewriting from anchors requiring sensor changes."
+  }
+}
